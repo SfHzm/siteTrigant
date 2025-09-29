@@ -1,11 +1,16 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@font-face {
+  font-family: 'GFS Artemisia';
+  src: url("./assets//fonts/gfs_artemisia/GFSArtemisia.ttf");
+}
+
 @theme trigantTheme {
   --color-bg: #ffffff;
   --color-title: #666;
   --color-text: #808080;
-  --color-accent: #ccac60;
+  --color-accent-gold: #ccac60;
   --color-accent-content: #403f3f;
   --color-back-footer: #a78540;
   --color-white-text: #ffffff;
@@ -13,6 +18,8 @@
   --color-black-accent: #37040e;
   --color-beige-accent: #fffaee;
   --color-menu : rgba(0, 0, 0, 0.56);
+
+ --font-artemisia: 'GFS Artemisia', serif;
 }
 
 body {
