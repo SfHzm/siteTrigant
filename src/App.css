@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme trigantTheme {
+  --color-bg: #ffffff;
+  --color-title: #666;
+  --color-text: #808080;
+  --color-accent: #ccac60;
+  --color-accent-content: #403f3f;
+  --color-back-footer: #a78540;
+  --color-white-text: #ffffff;
+  --color-green-accent: #4d6125;
+  --color-black-accent: #37040e;
+  --color-beige-accent: #fffaee;
+  --color-menu : rgba(0, 0, 0, 0.56);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
