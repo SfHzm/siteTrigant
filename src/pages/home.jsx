@@ -10,7 +10,14 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div>
-      <img src={mainImg} alt="Chateau Trigant" className="w-full h-60" />
+      <div className="relative w-full h-60">
+        <img
+          src={mainImg}
+          alt="Chateau Trigant"
+          className="w-full h-60 object-cover"
+        />
+        <div className="absolute inset-0 bg-black/20"></div>
+      </div>
 
       <div className="carousel w-full mt-[var(--space-small)]">
         <div
@@ -34,12 +41,28 @@ export default function Home() {
           <div className="absolute left-5 right-5 top-5/9 flex -translate-y-1/2 transform justify-between">
             <a
               href="#slide3"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("slide3").scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "nearest",
+                });
+              }}
               className="btn btn-circle bg-bg border-accent-gold text-accent-gold"
             >
               ❮
             </a>
             <a
               href="#slide2"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("slide2").scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "nearest",
+                });
+              }}
               className="btn btn-circle bg-bg border-accent-gold text-accent-gold"
             >
               ❯
@@ -71,12 +94,28 @@ export default function Home() {
           <div className="absolute left-5 right-5 top-5/9 flex -translate-y-1/2 transform justify-between">
             <a
               href="#slide1"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("slide1").scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "nearest",
+                });
+              }}
               className="btn btn-circle bg-bg border-accent-gold text-accent-gold"
             >
               ❮
             </a>
             <a
               href="#slide3"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("slide3").scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "nearest",
+                });
+              }}
               className="btn btn-circle bg-bg border-accent-gold text-accent-gold"
             >
               ❯
@@ -105,12 +144,28 @@ export default function Home() {
           <div className="absolute left-5 right-5 top-5/9 flex -translate-y-1/2 transform justify-between">
             <a
               href="#slide2"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("slide2").scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "nearest",
+                });
+              }}
               className="btn btn-circle bg-bg border-accent-gold text-accent-gold"
             >
               ❮
             </a>
             <a
               href="#slide1"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("slide1").scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "nearest",
+                });
+              }}
               className="btn btn-circle bg-bg border-accent-gold text-accent-gold"
             >
               ❯
@@ -139,7 +194,10 @@ export default function Home() {
               ullamcorper bibendum nisi ac dapibus. Nam nec ipsum hendrerit,
               blandit nulla eu, consectetur elit. Fusce gravida, diam.
             </p>
-            <Link to="/mariage" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl border-1 rounded-xs border-accent-content text-accent-content font-normal font-abhaya text-sm float-right mt-2.5 p-4">
+            <Link
+              to="/mariage"
+              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl border-1 rounded-xs border-accent-content text-accent-content font-normal font-abhaya text-sm float-right mt-2.5 p-4"
+            >
               En savoir +
             </Link>
           </div>
