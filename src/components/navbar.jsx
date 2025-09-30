@@ -63,7 +63,7 @@ export default function Navbar() {
                 <a onClick={() => setMenuOpen(false)}>ACCUEIL</a>
               </Link>
               <Link to="/histoire" className={`link-container ${location.pathname === "/histoire" ? "text-accent-gold" : ""}`}>
-                <a onClick={() => setMenuOpen(false)}>HISTOIRE</a>
+                <a onClick={() => setMenuOpen(false)}>HISTOIRES</a>
               </Link>
               <Link to="/mariage" className={`link-container ${location.pathname === "/mariage" ? "text-accent-gold" : ""}`}>
                 <a onClick={() => setMenuOpen(false)}>MARIAGE</a>
