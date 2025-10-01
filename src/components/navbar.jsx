@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import groupLogo from "../assets/logo/chateauTrigant.png";
-import pessacLogo from "../assets/logo/Logo Pessac-Leognan.png";
+import LogoTrigantBlanc from "../assets/logo/TrigantBlanc.png";
+import LogoTrigantNoir from "../assets/logo/TrigantNoir.png";
+import pessacLogoBlanc from "../assets/logo/LogoPessacBlanc.png";
+import pessacLogoNoir from "../assets/logo/LogoPessacNoir.png";
 import "./navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 
@@ -52,7 +54,7 @@ export default function Navbar() {
             />
 
             <svg
-              className={`swap-off ${scrolled ? "fill-title" : "fill-bg"}`}
+              className={`swap-off ${scrolled ? "fill-black" : "fill-bg"}`}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -115,24 +117,14 @@ export default function Navbar() {
       >
         <Link to={"/"} className="flex flex-col gap-1.5 items-center">
           <img
-            src={groupLogo}
-            alt="Group Logo"
+            src={scrolled ? LogoTrigantNoir : LogoTrigantBlanc}
+            alt="Trigant Logo"
             className={`w-40`}
-            style={
-              scrolled
-                ? { filter: "invert(60%) brightness(40%)" }
-                : { filter: "invert(0) brightness(2)" }
-            }
           />
           <img
-            src={pessacLogo}
+            src={scrolled ? pessacLogoNoir : pessacLogoBlanc}
             alt="Pessac-Leognan Logo"
             className={`w-30`}
-            style={
-              scrolled
-                ? { filter: "invert(60%) brightness(40%)" }
-                : { filter: "invert(0) brightness(2)" }
-            }
           />
         </Link>
       </div>

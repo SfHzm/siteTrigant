@@ -1,5 +1,5 @@
-import pessacLogo from "../assets/logo/Logo Pessac-Leognan.png";
-import groupLogo from "../assets/logo/chateauTrigant.png";
+import pessacLogo from "../assets/logo/LogoPessacBlanc.png";
+import groupLogo from "../assets/logo/TrigantBlanc.png";
 import "./footer.scss";
 
 export default function Footer() {
