@@ -5,19 +5,13 @@ import cours from "../assets/images/PAULINE & CLÉMENT-11.jpg";
 import vigne_gauche from "../assets/decorations/vigne_gauche_rotate.png";
 import vigne_droite from "../assets/decorations/vigne_droite_rotate.png";
 import jardin_nuit from "../assets/images/jardin_nuit_mariage.jpeg";
+import ImageAccueil from "../components/ImageAccueil";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
     <div>
-      <div className="relative w-full h-60">
-        <img
-          src={mainImg}
-          alt="Chateau Trigant"
-          className="w-full h-60 object-cover"
-        />
-        <div className="absolute inset-0 bg-black/20"></div>
-      </div>
+      <ImageAccueil src={mainImg} alt="Chateau Trigant" />
 
       <div className="carousel w-full mt-[var(--space-small)]">
         <div
