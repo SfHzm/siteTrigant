@@ -1,4 +1,4 @@
-import pessacLogo from "../assets/logo/Logo Pessac-Leognan 2023 web Noir-modified 1.png";
+import pessacLogo from "../assets/logo/Logo Pessac-Leognan.png";
 import groupLogo from "../assets/logo/chateauTrigant.png";
 import "./footer.scss";
 
@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="w-[100vw] flex flex-col justify-center items-center bg-accent-gold py-5">
         <div className="navbar-center flex flex-col w-fit gap-1.5">
           <img src={groupLogo} alt="Group Logo" className="w-40" />
-          <img src={pessacLogo} alt="Pessac-Leognan Logo" className="w-30" />
+          <img src={pessacLogo} alt="Pessac-Leognan Logo" className="w-30" style={{ filter: "brightness(2)" }}/>
         </div>
 
         <div className="flex flex-row gap-8 h-fit">
