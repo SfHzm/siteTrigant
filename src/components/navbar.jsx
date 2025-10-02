@@ -71,7 +71,7 @@ export default function Navbar() {
           </label>
           <ul
             tabIndex="0"
-            className={`menu bg-menu absolute top-0 text-white-text divide-y-1 divide-white-text font-artemisia text-sm w-50 h-60 py-12 items-center my-slide-menu md:w-[40vw] md:h-[30vh] md:text-lg
+            className={`menu bg-menu absolute top-0 text-white-text divide-y-1 divide-white-text font-artemisia text-sm w-50 h-60 py-12 items-center my-slide-menu md:w-[40vw] md:h-fit md:text-lg
               ${
               menuOpen ? "open" : "closed"
             }`}
