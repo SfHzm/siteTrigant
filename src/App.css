@@ -42,6 +42,7 @@
   --size-mini-text: 1rem;
   --size-micro-text: 0.9rem;
   --size-title: 1.4rem;
+  --size-title-md : 1.8rem;
   --size-text: 1.2rem;
 
   --font-artemisia: "GFS Artemisia", serif;
@@ -51,9 +52,12 @@
   --font-abhaya-bold: "Abhaya Libre Bold", serif;
 
   --space-small: 11vw;
+  --space-small-md: 6vw;
   --space-big: 20vw;
   --space-img-title: 10vw;
+  --space-img-title-md: 4vw;
   --space-title-text: 3vw;
+  --space-title-text-md: 2vw;
 }
 
 body {
@@ -77,7 +81,6 @@ body {
   font-size: var(--size-mini-title);
   width: 80%;
 }
-
 
 .mini-title,
 .medium-title,
@@ -112,5 +115,20 @@ body {
         --timeline-row-start: 0; /* rond collé hr */
       }
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: var(--size-title-md);
+    padding-top: var(--space-small-md);
+  }
+  
+  .mini-title {
+    padding-top: var(--space-img-title-md); 
+  }
+
+  .mini-text {
+    padding-top: 0;
   }
 }

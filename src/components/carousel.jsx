@@ -6,7 +6,21 @@ export default function Carousel({ slides }) {
   const timeoutRef = useRef(null);
   const isClickScrolling = useRef(false);
   const [current, setCurrent] = useState(0);
+  const [numVisible, setNumVisible] = useState(1);
+
   const length = slides.length;
+
+  // Détecte le nombre de slides visibles selon la taille d'écran
+  useEffect(() => {
+    const updateNumVisible = () => {
+      setNumVisible(window.innerWidth >= 768 ? 2 : 1); // md = 768px
+    };
+    updateNumVisible();
+    window.addEventListener("resize", updateNumVisible);
+    return () => window.removeEventListener("resize", updateNumVisible);
+  }, []);
+
+  const numButtons = Math.ceil(length / numVisible);
 
   // Met à jour le slide courant en fonction du scroll
   const handleScroll = () => {
@@ -14,14 +28,13 @@ export default function Carousel({ slides }) {
 
     const children = Array.from(carouselRef.current.children);
     const scrollLeft = carouselRef.current.scrollLeft;
-    const width = carouselRef.current.offsetWidth;
 
     const index = children.findIndex((child) => {
       const left = child.offsetLeft;
-      return scrollLeft >= left - width / 2 && scrollLeft < left + width / 2;
+      return scrollLeft + 1 >= left && scrollLeft < left + child.offsetWidth;
     });
 
-    if (index !== -1) setCurrent(index);
+    if (index !== -1) setCurrent(Math.floor(index / numVisible));
   };
 
   // Reset timer
@@ -34,8 +47,9 @@ export default function Carousel({ slides }) {
     resetTimeout();
     timeoutRef.current = setTimeout(() => {
       if (!carouselRef.current) return;
-      const next = current === length - 1 ? 0 : current + 1;
-      const nextSlideEl = carouselRef.current.children[next];
+      const next = current + 1 >= numButtons ? 0 : current + 1;
+      const slideIndex = next * numVisible;
+      const nextSlideEl = carouselRef.current.children[slideIndex];
       if (nextSlideEl) {
         carouselRef.current.scrollTo({
           left: nextSlideEl.offsetLeft,
@@ -46,21 +60,22 @@ export default function Carousel({ slides }) {
     }, 10000);
 
     return () => clearTimeout(timeoutRef.current);
-  }, [current, length]);
+  }, [current, numButtons, numVisible]);
 
   // Clique sur point
-  const goToSlide = (index) => {
+  const goToSlide = (buttonIndex) => {
     resetTimeout();
     isClickScrolling.current = true;
 
-    const slideEl = carouselRef.current.children[index];
+    const slideIndex = buttonIndex * numVisible;
+    const slideEl = carouselRef.current.children[slideIndex];
     if (slideEl) {
       carouselRef.current.scrollTo({
         left: slideEl.offsetLeft,
         behavior: "smooth",
       });
     }
-    setCurrent(index);
+    setCurrent(buttonIndex);
 
     setTimeout(() => {
       isClickScrolling.current = false;
@@ -70,7 +85,7 @@ export default function Carousel({ slides }) {
   return (
     <div className="relative">
       <div
-        className="carousel w-full mt-[var(--space-small)]"
+        className="carousel flex w-full gap-x-4 mt-[var(--space-small)] overflow-x-auto scroll-smooth"
         ref={carouselRef}
         onScroll={handleScroll}
       >
@@ -78,7 +93,7 @@ export default function Carousel({ slides }) {
           <div
             key={index}
             id={`slide${index}`}
-            className="carousel-item relative w-full flex flex-col items-center"
+            className="carousel-item relative flex flex-col items-center w-full md:w-1/2"
           >
             {/* Image */}
             {slide.variant === "shadowTLeft" ? (
@@ -127,7 +142,7 @@ export default function Carousel({ slides }) {
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="w-70 h-40 shadow-[28px_28px_0px_-15px_var(--color-accent-gold)] ml-[14px]"
+                className="w-70 h-40 shadow-[28px_28px_0px_-15px_var(--color-accent-gold)] ml-[14px] mb-[13px]"
               />
             ) : (
               <img src={slide.image} alt={slide.title} className="w-70 h-40" />
@@ -147,7 +162,7 @@ export default function Carousel({ slides }) {
 
       {/* Points de navigation */}
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {slides.map((_, index) => (
+        {Array.from({ length: numButtons }).map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}

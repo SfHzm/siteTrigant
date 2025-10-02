@@ -8,11 +8,11 @@ export default function PresentationPage({ page }) {
   }
 
   return (
-    <div className="text-center w-[90vw] flex flex-col justify-center items-center my-[var(--space-small)] mx-auto">
-      <h1 className="font-abhaya-bold text-title text-2xl text-[1.4rem]">
+    <div className="text-center w-[90vw] flex flex-col justify-center items-center my-[var(--space-small)] mx-auto md:mb-[var(--space-small-md)]">
+      <h1 className="font-abhaya-bold text-title text-2xl text-[1.4rem] md:text-3xl">
         {presentation.title}
       </h1>
-      <p className="font-inter text-text mt-[2vh] text-[1rem]">{presentation.text}</p>
+      <p className="font-inter text-text mt-[2vh] text-[1rem] md:text-lg">{presentation.text}</p>
     </div>
   );
 }
