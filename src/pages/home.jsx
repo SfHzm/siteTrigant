@@ -14,10 +14,12 @@ export default function Home() {
     <div>
       <ImageAccueil src={mainImg} alt="Chateau Trigant" />
 
-      <PresentationPage page="home"/>
+      <PresentationPage page="home" />
 
-
-      <Carousel slides={slides} />
+      <div>
+        <h1 className="title">Nos Espaces de Réception</h1>
+        <Carousel slides={slides} />
+      </div>
 
       <div className="flex justify-between items-center mt-[var(--space-big)]">
         <img src={vigne_gauche} alt="" className="w-40" />
@@ -35,9 +37,9 @@ export default function Home() {
               Célébrez Votre Union
             </h1>
             <p className="h-fit text-justify text-[0.75rem] font-inter text-accent-content mt-2.5 w-[82vw]">
-              Célébrez le mariage de vos rêves dans un lieu d’exception. <br/> A la
-              tombée de la nuit, le parc s’illumine pour des soirées féériques.
-              Ce cadre enchanteur émerveillera vos invités.
+              Célébrez le mariage de vos rêves dans un lieu d’exception. <br />{" "}
+              A la tombée de la nuit, le parc s’illumine pour des soirées
+              féériques. Ce cadre enchanteur émerveillera vos invités.
             </p>
             <Link
               to="/mariage"
