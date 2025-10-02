@@ -1,0 +1,23 @@
+[
+  {
+    "image": "/images/formule1.jpg",
+    "title": "L'INSTANT PRÉCIEUX",
+    "soustitle": "Un jour en semaine, du lundi au jeudi",
+    "text": "Une célébration en semaine, tout en élégance et raffinement. \n\n Mise à disposition de l’Orangerie, du Jardin d’hiver, du Vestibule et des espaces extérieurs de 9h à 2h du matin. \n\n *Possibilité de louer des chambres en supplément*",
+    "variant": "shadowLeft"
+  },
+  {
+    "image": "/images/formule2.jpg",
+    "title": "MARIAGE DE RÊVE",
+    "soustitle": "Un week-end de 2 jours",
+    "text": "Célébrez le mariage de vos rêves dans un lieu d’exception le temps d’un week-end. \n \n Mise à disposition de l’Orangerie, du Jardin d’hiver, du Vestibule et des espaces extérieurs du vendredi 16h au dimanche à 17h. \n \n *Sont incluses 6 chambres pour 2 nuits*",
+    "variant": "gold-bar"
+  },
+  {
+    "image": "/images/cour.jpg",
+    "title": "WEEK-END SIGNATURE",
+    "soustitle": "un week-end de 3 jours",
+    "text": "Trois jours exclusifs pour une expérience sur mesure, entre luxe, fête et émotions. \n \n  Mise à disposition de l’Orangerie, du Jardin d’hiver, du Vestibule, des salons et des espaces extérieurs du vendredi 10h au lundi 10h ou du jeudi 17h au dimanche 17h. \n\n *Sont incluses 6 chambres pour 3 nuits*",
+    "variant": "shadowRight"
+  }
+]
