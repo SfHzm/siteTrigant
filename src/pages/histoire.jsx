@@ -31,7 +31,7 @@ export default function Histoire() {
 
         <div className="flex flex-col items-center h-fit w-85">
           <h1
-            className="mini-title text-left w-full"
+            className="medium-title text-left w-full"
             style={{ paddingTop: "5vw", textAlign: "left", width: "100%" }}
           >
             300 ans d'Histoire
