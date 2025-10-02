@@ -1,0 +1,162 @@
+import { useEffect, useRef, useState } from "react";
+
+export default function Carousel({ slides }) {
+  const carouselRef = useRef(null);
+  const timeoutRef = useRef(null);
+  const isClickScrolling = useRef(false);
+  const [current, setCurrent] = useState(0);
+  const length = slides.length;
+
+  // Met à jour le slide courant en fonction du scroll
+  const handleScroll = () => {
+    if (!carouselRef.current || isClickScrolling.current) return;
+
+    const children = Array.from(carouselRef.current.children);
+    const scrollLeft = carouselRef.current.scrollLeft;
+    const width = carouselRef.current.offsetWidth;
+
+    const index = children.findIndex((child) => {
+      const left = child.offsetLeft;
+      return scrollLeft >= left - width / 2 && scrollLeft < left + width / 2;
+    });
+
+    if (index !== -1) setCurrent(index);
+  };
+
+  // Reset timer
+  const resetTimeout = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+
+  // Auto-scroll toutes les 10s
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(() => {
+      if (!carouselRef.current) return;
+      const next = current === length - 1 ? 0 : current + 1;
+      const nextSlideEl = carouselRef.current.children[next];
+      if (nextSlideEl) {
+        carouselRef.current.scrollTo({
+          left: nextSlideEl.offsetLeft,
+          behavior: "smooth",
+        });
+      }
+      setCurrent(next);
+    }, 10000);
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [current, length]);
+
+  // Clique sur point
+  const goToSlide = (index) => {
+    resetTimeout();
+    isClickScrolling.current = true;
+
+    const slideEl = document.getElementById(`slide${index}`);
+    if (slideEl) {
+      slideEl.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest",
+      });
+    }
+    setCurrent(index);
+
+    // Réactive le scroll normal après le scroll animé
+    setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 500);
+  };
+
+  return (
+    <div className="relative">
+      <div
+        className="carousel w-full mt-[var(--space-small)]"
+        ref={carouselRef}
+        onScroll={handleScroll}
+      >
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            id={`slide${index}`}
+            className="carousel-item relative w-full flex flex-col items-center"
+          >
+            {/* Image */}
+            {slide.variant === "shadowTLeft" ? (
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-70 h-40 mt-[13px] shadow-[-28px_-28px_0px_-15px_var(--color-accent-gold)] ml-[14px]"
+              />
+            ) : slide.variant === "gold-barTop" ? (
+              <div className="relative inline-block mt-[13px]">
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-70 h-40 block"
+                />
+                <div
+                  className="absolute w-76 h-1/2 left-1/2 transform -translate-x-1/2 top-[-13px] bg-accent-gold"
+                  style={{ zIndex: -12 }}
+                ></div>
+              </div>
+            ) : slide.variant === "shadowTRight" ? (
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-70 h-40 mt-[13px] shadow-[28px_-28px_0px_-15px_var(--color-accent-gold)] ml-[14px]"
+              />
+            ) : slide.variant === "shadowLeft" ? (
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-70 h-40 shadow-[-28px_28px_0px_-15px_var(--color-accent-gold)] ml-[14px] mb-[13px]"
+              />
+            ) : slide.variant === "gold-bar" ? (
+              <div className="relative inline-block mb-[13px]">
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-70 h-40 block"
+                />
+                <div
+                  className="absolute w-76 h-1/2 left-1/2 transform -translate-x-1/2 bottom-[-13px] bg-accent-gold"
+                  style={{ zIndex: -12 }}
+                ></div>
+              </div>
+            ) : slide.variant === "shadowRight" ? (
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-70 h-40 shadow-[28px_28px_0px_-15px_var(--color-accent-gold)] ml-[14px]"
+              />
+            ) : (
+              <img src={slide.image} alt={slide.title} className="w-70 h-40" />
+            )}
+
+            {/* Texte */}
+            <div className="w-80 flex flex-col justify-center items-center mb-[12vw]">
+              <h2 className="mini-title">{slide.title}</h2>
+              <p className="mini-text" style={{ whiteSpace: "pre-line" }}>
+                {slide.text}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Points de navigation */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-2 h-2 rounded-full ${
+              index === current ? "bg-accent-gold" : "bg-title"
+            }`}
+          ></button>
+        ))}
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "image": "/images/orangerie.jpg",
+    "title": "L’ORANGERIE",
+    "text": "Spacieuse et lumineuse, l’Orangerie de 235 m² offre un cadre élégant et modulable pour accueillir votre cocktail, votre dîner et votre soirée. \n L’Orangerie accueille jusqu’à 150 personnes assises en un seul lieu et jusqu’à 220 personnes en format cocktail.",
+    "variant": "shadowTLeft"
+  },
+  {
+    "image": "/images/jardinHiver.jpg",
+    "title": "LE JARDIN D’HIVER",
+    "text": "Le jardin d’hiver de 40 m², baigné de lumière naturelle, ouvre sur la cour arborée et offre un cadre idéal pour des instants de détente ou de tranquillité.",
+    "variant": "gold-barTop"
+  },
+  {
+    "image": "/images/vestibule.png",
+    "title": "LE VESTIBULE",
+    "text": "Le vestibule de 40 m² séduit par son élégance classique. Il accueillera vos cocktails plus intimes.",
+    "variant": "shadowTRight"
+  },
+  {
+    "image": "/images/salon.jpg",
+    "title": "LES SALONS",
+    "text": "Dans un cadre raffiné et chaleureux, nos deux salons de 35 m² accueillent vos plus beaux instants : une séance photo ou une pause détente.",
+    "variant": "shadowLeft"
+  },
+  {
+    "image": "/images/pelouse.jpg",
+    "title": "LA GRANDE PELOUSE",
+    "text": "Le parc se compose d’une grande prairie, de bosquets fleuris et d’arbres centenaires. \nFace à la superbe façade du Château, la vaste pelouse de 4 000 m² accueillera votre cocktail de mariage.",
+    "variant": "gold-bar"
+  },
+  {
+    "image": "/images/cour.jpg",
+    "title": "LA COUR INTÉRIEURE",
+    "text": "La cour intérieure de 500 m² offre un havre de fraicheur. \n Arborée, soigneusement paysagée et agrémentée d’une pelouse verdoyante, elle accueillera votre cocktail ou votre brunch dans une atmosphère élégante et conviviale.",
+    "variant": "shadowRight"
+  }
+]
