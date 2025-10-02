@@ -1,8 +1,13 @@
 .div-container {
-    font-size: 0.8rem;
-    width: 40vw;
-    
-    .info {
-        font-family: "var(--font-inter)";
-    }
+  font-size: 0.8rem;
+  width: 40vw;
+
+  .info {
+    font-family: "var(--font-inter)";
+  }
+
+  @media (min-width: 768px) {
+    width: fit-content;
+    font-size: 0.9rem;
+  }
 }
