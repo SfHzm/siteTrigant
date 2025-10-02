@@ -78,3 +78,13 @@ body {
   text-align: justify;
   width: 100%;
 }
+
+@layer utilities {
+  .timeline-vertical {
+    &.timeline-snap-icon {
+      & > li {
+        --timeline-row-start: 0; /* rond collé hr */
+      }
+    }
+  }
+}
