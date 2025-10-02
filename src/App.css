@@ -37,8 +37,10 @@
   --color-menu: rgba(0, 0, 0, 0.56);
   --color-menu-scroll: rgba(255, 255, 255, 0.7);
 
-  --size-mini-title: 1.3rem;
+  --size-mini-title: 1.15rem;
+  --size-medium-title: 1.3rem;
   --size-mini-text: 1rem;
+  --size-micro-text: 0.9rem;
   --size-title: 1.4rem;
   --size-text: 1.2rem;
 
@@ -61,13 +63,37 @@ body {
   overflow-x: hidden;
 }
 
+.title {
+  font-size: var(--size-title);
+  width: 100%;
+}
+
+.medium-title {
+  font-size: var(--size-medium-title);
+  width: 90%;
+}
+
 .mini-title {
+  font-size: var(--size-mini-title);
+  width: 80%;
+}
+
+
+.mini-title,
+.medium-title,
+.title {
   color: var(--color-title);
   font-family: var(--font-artemisia-bold);
   padding-top: var(--space-img-title);
   text-align: center;
-  font-size: var(--size-mini-title);
-  width: 80%;
+}
+
+.sousTitle {
+  color: var(--color-text);
+  font-family: var(--font-inter);
+  margin-top: var(--space-title-text);
+  margin-bottom: 4vw;
+  font-size: var(--size-micro-text);
 }
 
 .mini-text {

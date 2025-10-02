@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 export default function Carousel({ slides }) {
   const carouselRef = useRef(null);
@@ -52,17 +53,15 @@ export default function Carousel({ slides }) {
     resetTimeout();
     isClickScrolling.current = true;
 
-    const slideEl = document.getElementById(`slide${index}`);
+    const slideEl = carouselRef.current.children[index];
     if (slideEl) {
-      slideEl.scrollIntoView({
+      carouselRef.current.scrollTo({
+        left: slideEl.offsetLeft,
         behavior: "smooth",
-        block: "nearest",
-        inline: "nearest",
       });
     }
     setCurrent(index);
 
-    // Réactive le scroll normal après le scroll animé
     setTimeout(() => {
       isClickScrolling.current = false;
     }, 500);
@@ -137,9 +136,10 @@ export default function Carousel({ slides }) {
             {/* Texte */}
             <div className="w-80 flex flex-col justify-center items-center mb-[12vw]">
               <h2 className="mini-title">{slide.title}</h2>
-              <p className="mini-text" style={{ whiteSpace: "pre-line" }}>
-                {slide.text}
-              </p>
+              <p className="sousTitle">{slide.soustitle}</p>
+              <div className="mini-text" style={{ whiteSpace: "pre-line" }}>
+                <ReactMarkdown>{slide.text}</ReactMarkdown>
+              </div>
             </div>
           </div>
         ))}
