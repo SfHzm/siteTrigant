@@ -54,10 +54,11 @@
   --space-small: 11vw;
   --space-small-md: 6vw;
   --space-big: 20vw;
+  --space-big-md: 15vw;
   --space-img-title: 10vw;
   --space-img-title-md: 4vw;
   --space-title-text: 3vw;
-  --space-title-text-md: 2vw;
+  --space-title-text-md: 2.5vw;
 }
 
 body {
@@ -129,6 +130,6 @@ body {
   }
 
   .mini-text {
-    padding-top: 0;
+    padding-top: var(--space-title-text-md);
   }
 }

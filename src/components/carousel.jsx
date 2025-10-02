@@ -149,9 +149,11 @@ export default function Carousel({ slides }) {
             )}
 
             {/* Texte */}
-            <div className="w-80 flex flex-col justify-center items-center mb-[12vw]">
+            <div className="w-80 flex flex-col justify-center items-center mb-[8vh] md:mb-[7.5vh]">
               <h2 className="mini-title">{slide.title}</h2>
-              <p className="sousTitle">{slide.soustitle}</p>
+              {slide.soustitle && (
+                <p className="sousTitle">{slide.soustitle}</p>
+              )}
               <div className="mini-text" style={{ whiteSpace: "pre-line" }}>
                 <ReactMarkdown>{slide.text}</ReactMarkdown>
               </div>
@@ -166,7 +168,7 @@ export default function Carousel({ slides }) {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 rounded-full ${
+            className={`w-2 h-2 rounded-full md:w-2.5 md:h-2.5 ${
               index === current ? "bg-accent-gold" : "bg-title"
             }`}
           ></button>
