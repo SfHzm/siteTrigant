@@ -11,7 +11,7 @@ variables:
     VER: ${CI_COMMIT_REF_NAME}_1.0-${CI_PIPELINE_ID}
     SSH_SERVER: $SSH_SERVER
     SSH_CMD: "ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY"
-    SSH_USER: "gitlab_deploy"
+    SSH_USER: "docker_deploy"
     SSH_PORT_WWW1: "2254"
     
 workflow:
@@ -125,7 +125,7 @@ upload-to-registry:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker push ${CI_REGISTRY_IMAGE}:$VER
 
-deploy-caisse-www1:
+deploy-trigant:
   stage: deploy-ssh
   when: manual
   only:
