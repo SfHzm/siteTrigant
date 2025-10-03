@@ -9,7 +9,7 @@ export default function ImageAccueil({ src, alt, className, h, p = "" }) {
       <div className="absolute inset-0 bg-black/20"></div>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white-text gap-5 pt-3.5">
-        <h1 className="font-artemisia text-[1.4rem]">{h}</h1>
+        <h1 className="font-artemisia text-[1.4rem] md:text-4xl">{h}</h1>
         <p className="text-[0.63rem] text-center font-inter font-light w-80">{p}</p>
       </div>
     </div>

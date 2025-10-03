@@ -16,11 +16,11 @@ export default function Timeline({ h, p }) {
   };
 
   return (
-    <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical w-80">
+    <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical w-80 md:w-[39.7vw]">
       <li>
-        <div className="timeline-middle border-2 border-accent-gold rounded-full w-2.5 h-2.5 mx-[5px]"></div>
+        <div className="timeline-middle border-2 border-accent-gold rounded-full w-2.5 h-2.5 mx-1.25 md:w-3.5 md:h-3.5 md:mx-0.75"></div>
         <div className="timeline-start h-18"></div>
-        <hr className="bg-accent-gold" style={{ width: "0.5vw" }} />
+        <hr className="bg-accent-gold" style={{ width: "2.5px" }} />
       </li>
       {h.map((header, i) => (
         <li key={i}>
@@ -34,15 +34,15 @@ export default function Timeline({ h, p }) {
               i !== h.length - 1 ? "h-fit min-h-20" : "min-h-25 h-fit"
             } flex flex-col text-justify gap-2 px-2`}
           >
-            <div className="text-lg text-black-accent" style={{fontFamily: "var(--font-artemisia)"}}>{header}</div>
-            <p className="pb-7 text-title" style={{fontFamily: "var(--font-inter)"}}>{p[i]}</p>
+            <div className="text-lg text-black-accent md:text-[1.4rem] leading-none md:pb-1" style={{fontFamily: "var(--font-artemisia)"}}>{header}</div>
+            <p className="pb-7 text-title md:text-[1.04rem]" style={{fontFamily: "var(--font-inter)"}}>{p[i]}</p>
             
           </div>
-          <hr className="bg-accent-gold" style={{ width: "0.5vw" }} />
+          <hr className="bg-accent-gold" style={{ width: "2.5px" }} />
         </li>
       ))}
       <li>
-        <div className="timeline-middle border-2 border-accent-gold rounded-full w-2.5 h-2.5 mx-[5px]"></div>
+        <div className="timeline-middle border-2 border-accent-gold rounded-full w-2.5 h-2.5 mx-1.25 md:w-3.5 md:h-3.5 md:mx-0.75"></div>
       </li>
     </ul>
   );

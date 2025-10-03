@@ -39,10 +39,12 @@
 
   --size-mini-title: 1.15rem;
   --size-medium-title: 1.3rem;
+  --size-medium-title-md: 1.5rem;
+  --size-medium-text-md: 1.3rem;
   --size-mini-text: 1rem;
   --size-micro-text: 0.9rem;
   --size-title: 1.4rem;
-  --size-title-md : 1.8rem;
+  --size-title-md: 1.8rem;
   --size-text: 1.2rem;
 
   --font-artemisia: "GFS Artemisia", serif;
@@ -78,7 +80,8 @@ body {
   width: 90%;
 }
 
-.mini-title {
+.mini-title,
+.medium-text {
   font-size: var(--size-mini-title);
   width: 80%;
 }
@@ -100,7 +103,8 @@ body {
   font-size: var(--size-micro-text);
 }
 
-.mini-text {
+.mini-text,
+.medium-text {
   color: var(--color-text);
   font-family: var(--font-inter);
   padding-top: var(--space-title-text);
@@ -114,6 +118,7 @@ body {
     &.timeline-snap-icon {
       & > li {
         --timeline-row-start: 0; /* rond collé hr */
+        --timeline-col-start: minmax(0, 0fr); /*li timeline à gauche*/
       }
     }
   }
@@ -124,12 +129,20 @@ body {
     font-size: var(--size-title-md);
     padding-top: var(--space-small-md);
   }
-  
+
   .mini-title {
-    padding-top: var(--space-img-title-md); 
+    padding-top: var(--space-img-title-md);
   }
 
   .mini-text {
     padding-top: var(--space-title-text-md);
+  }
+
+  .medium-title {
+    font-size: var(--size-medium-title-md);
+  }
+
+  .medium-text {
+    font-size: var(--size-medium-text-md);
   }
 }
