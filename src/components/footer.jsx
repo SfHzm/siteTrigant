@@ -1,6 +1,7 @@
 import pessacLogo from "../assets/logo/LogoPessacBlanc.png";
 import groupLogo from "../assets/logo/TrigantBlanc.png";
 import chateau from "../assets/logo/chateau_blanc.png";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 
 export default function Footer() {
@@ -70,7 +71,8 @@ export default function Footer() {
 
       <div className="bg-accent-gold w-[100vw] items-center pb-5 md:bg-back-footer md:py-4">
         <p className="font-bold text-xs text-center mt-4 w-[100vw] md:mt-0 md:text-[0.8rem]">
-          Château Trigant © 2024 - Tous droits réservés - Mentions Légales
+          Château Trigant © 2024 - Tous droits réservés -
+          <Link to={"/mentionslegales"}> Mentions Légales</Link>
         </p>
       </div>
     </footer>
