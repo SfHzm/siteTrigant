@@ -41,7 +41,7 @@ export default function Home() {
             alt=""
             className="w-[85vw] md:w-[92vw] lg:w-[100vw] lg:h-[20vw] lg:object-cover"
           />
-          <div className="md:absolute md:w-[87.5vw] md:h-[36vh] md:border-2 md:border-accent-gold md:top-1/2 md:-translate-y-1/2 lg:hidden"></div>
+          <div className="md:absolute md:w-[87.5vw] md:h-[57vw] md:border-2 md:border-accent-gold md:top-1/2 md:-translate-y-1/2 lg:hidden"></div>
           <div
             className="w-[90vw] h-2/5 px-[2.5vw] pt-2 md:absolute md:bg-accent-gold md:h-58 md:w-[50vw] md:top-1/2 md:-translate-y-1/2 md:right-0 lg:hidden"
             style={{ zIndex: 12 }}
