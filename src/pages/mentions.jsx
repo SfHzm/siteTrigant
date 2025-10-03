@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ImageAccueil from "../components/ImageAccueil";
-import mainImg from "../assets/images/23-modified.jpeg";
+import mainImg from "../assets/images/23-modified.jpg";
 
 export default function MentionsLegales() {
   return (

@@ -1,4 +1,4 @@
-import mainImg from "../assets/images/23-modified.jpeg";
+import mainImg from "../assets/images/23-modified.jpg";
 import ImageAccueil from "../components/ImageAccueil";
 import PresentationPage from "../components/presentationPage";
 import { useForm } from "@formspree/react";
