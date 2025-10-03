@@ -29,6 +29,7 @@
   --color-text: #808080;
   --color-accent-gold: #ccac60;
   --color-accent-content: #403f3f;
+  --color-accent-gold-trans :rgba(204, 172, 96, 0.88);
   --color-back-footer: #a78540;
   --color-white-text: #ffffff;
   --color-green-accent: #4d6125;
@@ -55,8 +56,10 @@
 
   --space-small: 6vh;
   --space-small-md: 4vh;
+  --space-small-lg: 10vh;
   --space-big: 10vh;
   --space-big-md: 11vh;
+  --space-big-lg: 20vh;
   --space-img-title: 5vh;
   --space-img-title-md: 2.5vh;
   --space-title-text: 1.9vh;
@@ -144,5 +147,11 @@ body {
   .sousTitle {
     margin-top: 1vh;
     margin-bottom: 2vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    padding-bottom: var(--space-small-md);
   }
 }

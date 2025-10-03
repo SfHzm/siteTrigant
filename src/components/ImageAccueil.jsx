@@ -4,7 +4,7 @@ export default function ImageAccueil({ src, alt, className, h, p = "" }) {
       <img
         src={src}
         alt={alt}
-        className="w-full h-60 md:h-fit object-cover"
+        className="w-full h-60 md:h-fit object-cover lg:h-[100vh]"
       />
       <div className="absolute inset-0 bg-black/20"></div>
 
