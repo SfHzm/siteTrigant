@@ -30,12 +30,14 @@ export default function Carousel({ slides }) {
   const numButtons = Math.max(length - numVisible + 1, 1);
 
   // Met à jour le slide courant en fonction du scroll
-  let scrollTimeout = null;
+  const scrollTimeoutRef = useRef(null);
   const handleScroll = () => {
-    if (!carouselRef.current || isClickScrolling.current) return;
+    if (!carouselRef.current) return;
+    // bloque recalcul pendant l’animation déclenchée par un clic
+    if (isClickScrolling.current) return;
 
-    if (scrollTimeout) clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
       const children = Array.from(carouselRef.current.children);
       const scrollLeft = carouselRef.current.scrollLeft;
 
@@ -62,6 +64,7 @@ export default function Carousel({ slides }) {
 
       const next = current + 1 >= numButtons ? 0 : current + 1;
       const slideEl = carouselRef.current.children[next];
+
       if (slideEl) {
         carouselRef.current.scrollTo({
           left: slideEl.offsetLeft,
@@ -91,7 +94,7 @@ export default function Carousel({ slides }) {
 
     setTimeout(() => {
       isClickScrolling.current = false;
-    }, 600);
+    }, 800); 
   };
 
   return (
