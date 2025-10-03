@@ -1,0 +1,145 @@
+stages:
+  - job-bash_exemple
+  - local
+  - docker
+  - deploy-preprod
+  - deploy-ssh
+
+variables:
+    ID: ${CI_COMMIT_SHORT_SHA}
+    GIT_SUBMODULE_STRATEGY: recursive
+    VER: ${CI_COMMIT_REF_NAME}_1.0-${CI_PIPELINE_ID}
+    SSH_SERVER: $SSH_SERVER
+    SSH_CMD: "ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY"
+    SSH_USER: "gitlab_deploy"
+    SSH_PORT_WWW1: "2254"
+    
+workflow:
+  rules:
+    - if: $CI_COMMIT_REF_NAME == 'test-deploy'
+      variables:
+        VER: alain_1.0-${CI_PIPELINE_ID}
+        ENV_FILE: $DEV_ENV_FILE
+        NGINX_CONF: $DEV_NGINX_CONF
+        DOCKER_NETWORK_NAME: "net-dev"
+        DOCKER_CONTAINER_NAME: "dev-trigant"
+        DOCKER_EXPOSER_PORT: "8081"
+        DEPLOY_MSG: "Deploying en dev de $VER"
+    - if: $CI_COMMIT_REF_NAME == 'dev'
+      variables:
+        ENV_FILE: $DEV_ENV_FILE
+        NGINX_CONF: $DEV_NGINX_CONF
+        DOCKER_NETWORK_NAME: "net-dev"
+        DOCKER_CONTAINER_NAME: "dev-trigant"
+        DOCKER_EXPOSER_PORT: "8081"
+        DEPLOY_MSG: "Deploying en dev de $VER"
+    - if: $CI_COMMIT_REF_NAME == 'main'
+      variables:
+        ENV_FILE: $PRODUCTION_ENV_FILE
+        NGINX_CONF: $PROD_NGINX_CONF
+        DOCKER_NETWORK_NAME: "net-prod"
+        DOCKER_CONTAINER_NAME: "front-trigant"
+        DOCKER_EXPOSER_PORT: "8082"
+        DEPLOY_MSG: "Deploying en production de $VER"
+    - when: always
+
+job-bash_exemple:
+  stage: job-bash_exemple
+  tags:
+    - shell
+  rules:
+    - when: never
+  script:
+    - |-
+        echo "on rentre dans le IF"
+        if [[ $CI_COMMIT_REF_NAME == 'test/deploy' ]]; then
+          echo "On est dans la branche $CI_COMMIT_REF_NAME"
+        elif [[ $CI_COMMIT_REF_NAME == 'main' ]]; then
+          echo "On est dans la branche $CI_COMMIT_REF_NAME"
+        else
+          echo "ou pas"
+        fi
+
+local-build:
+  stage: local
+  when : manual
+  tags :
+    - docker
+  image: node:lts
+  script: 
+    - echo "Start building App"
+    - npm install
+    - npm run build
+    - echo "Build successfully!"
+  artifacts:
+    expire_in: 1 hour
+    paths:
+    - dist
+    - node_modules/
+
+local-test:
+  stage: local
+  when : manual
+  tags :
+    - docker
+  image: node:lts
+  script:
+    - echo "Testing App"
+    - CI=true npm test
+    - echo "Test successfully!"
+
+docker-build:
+  stage: docker
+  when : manual
+  only:
+    - main
+    - dev
+    - test-deploy
+  tags:
+    - shell
+  before_script:
+    - echo "Docker registry url is $CI_REGISTRY"
+    - echo "Docker registry username is $CI_REGISTRY_USER"
+    - echo "Docker registry repo is ${CI_REGISTRY_IMAGE}:$VER"
+    - cat ${ENV_FILE}
+    - cp ${ENV_FILE} .env
+    - cat .env
+    - mkdir nginx
+    - cp ${NGINX_CONF} nginx/nginx.conf
+  timeout: 12h
+  script:
+    - docker build -t ${CI_REGISTRY_IMAGE}:$VER ${CI_PROJECT_DIR}
+  after_script:    
+    - rm -f .env
+    
+upload-to-registry:
+  stage: docker
+  when: manual
+  only:
+    - main
+    - dev
+    - test-deploy
+  tags:
+    - shell
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push ${CI_REGISTRY_IMAGE}:$VER
+
+deploy-caisse-www1:
+  stage: deploy-ssh
+  when: manual
+  only:
+    - main
+    - test-deploy
+    - dev
+  tags:
+    - shell
+  before_script:
+    - echo "$DEPLOY_MSG"
+  script:
+    - chmod 600 $SSH_PRIVATE_KEY
+    - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+    - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker pull ${CI_REGISTRY_IMAGE}:$VER"
+    - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker stop $DOCKER_CONTAINER_NAME || true && docker rm $DOCKER_CONTAINER_NAME || true"
+    - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "if ! docker network ls | grep -q $DOCKER_NETWORK_NAME ; then docker network create $DOCKER_NETWORK_NAME ; fi"
+    - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker run -p $DOCKER_EXPOSER_PORT:80 -dit --network $DOCKER_NETWORK_NAME --name $DOCKER_CONTAINER_NAME ${CI_REGISTRY_IMAGE}:$VER"
