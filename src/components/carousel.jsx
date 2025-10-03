@@ -13,7 +13,13 @@ export default function Carousel({ slides }) {
   // Détecte le nombre de slides visibles selon la taille d'écran
   useEffect(() => {
     const updateNumVisible = () => {
-      setNumVisible(window.innerWidth >= 768 ? 2 : 1);
+      if (window.innerWidth >= 1024) {
+        setNumVisible(3);
+      } else if (window.innerWidth >= 768) {
+        setNumVisible(2);
+      } else {
+        setNumVisible(1);
+      }
     };
     updateNumVisible();
     window.addEventListener("resize", updateNumVisible);
@@ -99,7 +105,7 @@ export default function Carousel({ slides }) {
           <div
             key={index}
             id={`slide${index}`}
-            className="carousel-item relative flex flex-col items-center w-full md:w-1/2"
+            className="carousel-item relative flex flex-col items-center w-full md:w-1/2 lg:w-1/3"
           >
             {/* Image */}
             {slide.variant === "shadowTLeft" ? (
