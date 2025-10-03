@@ -9,7 +9,7 @@ variables:
     ID: ${CI_COMMIT_SHORT_SHA}
     GIT_SUBMODULE_STRATEGY: recursive
     VER: ${CI_COMMIT_REF_NAME}_1.0-${CI_PIPELINE_ID}
-    SSH_SERVER: $SSH_SERVER
+    SSH_SERVER: $SSH_SERVER_TRIGANT
     SSH_CMD: "ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY"
     SSH_USER: "docker_deploy"
     SSH_PORT_WWW1: "2254"
