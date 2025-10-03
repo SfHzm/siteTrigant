@@ -37,7 +37,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`navbar justify-center items-start top-0 fixed ${
+      className={`navbar justify-center items-start top-0 fixed lg:py-10 ${
         scrolled
           ? `${menuOpen ? "bg-transparent" : "bg-menu-scroll"}`
           : "bg-transparent"
@@ -46,7 +46,7 @@ export default function Navbar() {
     >
       <div className="navbar-start left-0 top-0 fixed w-fit">
         <div className="relative" ref={dropdownRef}>
-          <label className="swap swap-rotate p-1 z-[100] absolute left-0 top-0">
+          <label className="swap swap-rotate p-1 z-[100] absolute left-0 top-0 lg:pt-10 lg:pl-10">
             <input
               type="checkbox"
               checked={menuOpen}
@@ -54,7 +54,9 @@ export default function Navbar() {
             />
 
             <svg
-              className={`swap-off ${scrolled ? "fill-black" : "fill-bg"} w-[24px] h-[24px] md:w-[38px] md:h-[38px]`}
+              className={`swap-off ${
+                scrolled ? "fill-black" : "fill-bg"
+              } w-[24px] h-[24px] md:w-[38px] md:h-[38px] lg:w-[40px] lg:h-[40px]`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -62,7 +64,7 @@ export default function Navbar() {
             </svg>
 
             <svg
-              className={`swap-on fill-bg  w-[24px] h-[24px] md:w-[38px] md:h-[38px]`}
+              className={`swap-on fill-bg  w-[24px] h-[24px] md:w-[38px] md:h-[38px] lg:w-[40px] lg:h-[40px]`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -71,10 +73,8 @@ export default function Navbar() {
           </label>
           <ul
             tabIndex="0"
-            className={`menu bg-menu absolute top-0 text-white-text divide-y-1 divide-white-text font-artemisia text-sm w-50 h-60 py-12 items-center my-slide-menu md:w-[40vw] md:h-fit md:text-lg
-              ${
-              menuOpen ? "open" : "closed"
-            }`}
+            className={`menu bg-menu absolute top-0 text-white-text divide-y-1 divide-white-text font-artemisia text-sm w-50 h-60 py-12 items-center my-slide-menu md:w-[40vw] md:h-fit md:text-lg lg:w-70 lg:py-20
+              ${menuOpen ? "open" : "closed"}`}
             style={{ zIndex: 60 }}
           >
             <Link
@@ -116,7 +116,7 @@ export default function Navbar() {
           <img
             src={scrolled ? LogoTrigantNoir : LogoTrigantBlanc}
             alt="Trigant Logo"
-            className={`w-40 md:w-70`}
+            className={`w-40 md:w-70 lg:w-80`}
           />
           <img
             src={scrolled ? pessacLogoNoir : pessacLogoBlanc}
