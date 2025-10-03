@@ -4,6 +4,7 @@ import Histoire from "./pages/histoire";
 import Evenements from "./pages/evenements";
 import Mariage from "./pages/mariage";
 import MentionsLegales from "./pages/mentions.jsx";
+import Contact from "./pages/contact.jsx";
 import Layout from "./pages/layout";
 import "./App.css";
 import ScrollToTop from "./components/ScrollToTop.jsx";
@@ -19,6 +20,7 @@ function App() {
           <Route path="/evenements" element={<Evenements />} />
           <Route path="/mariage" element={<Mariage />} />
           <Route path="/mentionslegales" element={<MentionsLegales />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
     </BrowserRouter>

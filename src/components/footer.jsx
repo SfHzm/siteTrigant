@@ -67,6 +67,12 @@ export default function Footer() {
             </div>
           </div>
         </div>
+          <Link
+            to={"/contact"}
+            className="mt-4 px-5 py-2 font-bold text-white bg-accent-gold border-2 border-white rounded-lg lg:hover:bg-white lg:hover:text-accent-gold transition-all duration-300 transform hover:-translate-y-1 shadow-md mx-auto md:mx-0"
+          >
+            Contactez-Nous
+          </Link>
       </div>
 
       <div className="bg-accent-gold w-[100vw] items-center pb-5 md:bg-back-footer md:py-4">
