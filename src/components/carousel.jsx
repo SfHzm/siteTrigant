@@ -13,79 +13,85 @@ export default function Carousel({ slides }) {
   // Détecte le nombre de slides visibles selon la taille d'écran
   useEffect(() => {
     const updateNumVisible = () => {
-      setNumVisible(window.innerWidth >= 768 ? 2 : 1); // md = 768px
+      setNumVisible(window.innerWidth >= 768 ? 2 : 1);
     };
     updateNumVisible();
     window.addEventListener("resize", updateNumVisible);
     return () => window.removeEventListener("resize", updateNumVisible);
   }, []);
 
-  const numButtons = Math.ceil(length / numVisible);
+  // Nombre de boutons pour slides “glissants”
+  const numButtons = Math.max(length - numVisible + 1, 1);
 
   // Met à jour le slide courant en fonction du scroll
+  let scrollTimeout = null;
   const handleScroll = () => {
     if (!carouselRef.current || isClickScrolling.current) return;
 
-    const children = Array.from(carouselRef.current.children);
-    const scrollLeft = carouselRef.current.scrollLeft;
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const children = Array.from(carouselRef.current.children);
+      const scrollLeft = carouselRef.current.scrollLeft;
 
-    const index = children.findIndex((child) => {
-      const left = child.offsetLeft;
-      return scrollLeft + 1 >= left && scrollLeft < left + child.offsetWidth;
-    });
+      const index = children.findIndex((child) => {
+        const left = child.offsetLeft;
+        return scrollLeft + 1 >= left && scrollLeft < left + child.offsetWidth;
+      });
 
-    if (index !== -1) setCurrent(Math.floor(index / numVisible));
+      if (index !== -1) setCurrent(index);
+    }, 100);
   };
 
-  // Reset timer
   const resetTimeout = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
-  // Auto-scroll toutes les 10s
+  // Auto-scroll toutes les 10s ou 5s
   useEffect(() => {
+    const interval = window.innerWidth >= 768 ? 5000 : 10000;
+
     resetTimeout();
     timeoutRef.current = setTimeout(() => {
       if (!carouselRef.current) return;
+
       const next = current + 1 >= numButtons ? 0 : current + 1;
-      const slideIndex = next * numVisible;
-      const nextSlideEl = carouselRef.current.children[slideIndex];
-      if (nextSlideEl) {
+      const slideEl = carouselRef.current.children[next];
+      if (slideEl) {
         carouselRef.current.scrollTo({
-          left: nextSlideEl.offsetLeft,
+          left: slideEl.offsetLeft,
           behavior: "smooth",
         });
       }
       setCurrent(next);
-    }, 10000);
+    }, interval);
 
     return () => clearTimeout(timeoutRef.current);
-  }, [current, numButtons, numVisible]);
+  }, [current, numButtons]);
 
   // Clique sur point
   const goToSlide = (buttonIndex) => {
     resetTimeout();
     isClickScrolling.current = true;
 
-    const slideIndex = buttonIndex * numVisible;
-    const slideEl = carouselRef.current.children[slideIndex];
+    const slideEl = carouselRef.current.children[buttonIndex];
     if (slideEl) {
       carouselRef.current.scrollTo({
         left: slideEl.offsetLeft,
         behavior: "smooth",
       });
     }
+
     setCurrent(buttonIndex);
 
     setTimeout(() => {
       isClickScrolling.current = false;
-    }, 500);
+    }, 600);
   };
 
   return (
     <div className="relative">
       <div
-        className="carousel flex w-full gap-x-4 mt-[var(--space-small)] overflow-x-auto scroll-smooth"
+        className="carousel flex w-full mt-[var(--space-small)] overflow-x-auto scroll-smooth"
         ref={carouselRef}
         onScroll={handleScroll}
       >
@@ -118,7 +124,7 @@ export default function Carousel({ slides }) {
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="w-70 h-40 mt-[13px] shadow-[28px_-28px_0px_-15px_var(--color-accent-gold)] ml-[14px]"
+                className="w-70 h-40 mt-[13px] shadow-[28px_-28px_0px_-15px_var(--color-accent-gold)] mr-[14px]"
               />
             ) : slide.variant === "shadowLeft" ? (
               <img
@@ -142,7 +148,7 @@ export default function Carousel({ slides }) {
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="w-70 h-40 shadow-[28px_28px_0px_-15px_var(--color-accent-gold)] ml-[14px] mb-[13px]"
+                className="w-70 h-40 shadow-[28px_28px_0px_-15px_var(--color-accent-gold)] mr-[14px] mb-[13px]"
               />
             ) : (
               <img src={slide.image} alt={slide.title} className="w-70 h-40" />
