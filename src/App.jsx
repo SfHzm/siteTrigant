@@ -4,11 +4,13 @@ import Histoire from "./pages/histoire";
 import Evenements from "./pages/evenements";
 import Mariage from "./pages/mariage";
 import Layout from "./pages/layout";
-import './App.css'
+import "./App.css";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
