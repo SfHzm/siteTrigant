@@ -43,7 +43,7 @@ export default function Mariage() {
         <img
           src={separateur}
           alt="separateur"
-          className="my-[var(--space-big)] w-80 md:w-[58vw] lg:w-[25vw] lg:my-[var(--space-big-lg)]"
+          className="my-[var(--space-big)] w-[80vw] md:w-[58vw] lg:w-[25vw] lg:my-[var(--space-big-lg)]"
         />
       </div>
 
@@ -62,6 +62,7 @@ export default function Mariage() {
                 width: "80%",
                 margin: "0 auto",
                 paddingBottom: "2vh",
+                textAlign: "left"
               }}
             >
               <li>Salle de réception « l’Orangerie » de 225m2</li>
@@ -82,6 +83,7 @@ export default function Mariage() {
                 width: "80%",
                 margin: "0 auto",
                 paddingBottom: "2vh",
+                textAlign: "left"
               }}
             >
               <li>Propriété de 7 hectares</li>

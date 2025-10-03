@@ -34,7 +34,7 @@ export default function Histoire() {
           />
         </div>
 
-        <div className="flex flex-col items-center h-fit w-85 md:w-[88vw]">
+        <div className="flex flex-col items-center h-fit w-[90vw] md:w-[88vw]">
           <h1
             className="medium-title text-left w-full"
             style={{ paddingTop: "5vw", textAlign: "left", width: "100%" }}

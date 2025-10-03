@@ -161,7 +161,7 @@ export default function Carousel({ slides }) {
             )}
 
             {/* Texte */}
-            <div className="w-80 flex flex-col justify-center items-center mb-[8vh] md:mb-[7.5vh]">
+            <div className="w-[85vw] flex flex-col justify-center items-center mb-[8vh] md:w-80 md:mb-[7.5vh]">
               <h2 className="mini-title">{slide.title}</h2>
               {slide.soustitle && (
                 <p className="sousTitle">{slide.soustitle}</p>
