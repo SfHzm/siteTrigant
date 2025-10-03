@@ -53,14 +53,13 @@
   --font-abhaya: "Abhaya Libre Regular", serif;
   --font-abhaya-bold: "Abhaya Libre Bold", serif;
 
-  --space-small: 11vw;
-  --space-small-md: 6vw;
-  --space-big: 20vw;
-  --space-big-md: 15vw;
-  --space-img-title: 10vw;
-  --space-img-title-md: 4vw;
-  --space-title-text: 3vw;
-  --space-title-text-md: 2.5vw;
+  --space-small: 6vh;
+  --space-small-md: 4vh;
+  --space-big: 10vh;
+  --space-big-md: 11vh;
+  --space-img-title: 5vh;
+  --space-img-title-md: 2.5vh;
+  --space-title-text: 1.9vh;
 }
 
 body {
@@ -134,15 +133,16 @@ body {
     padding-top: var(--space-img-title-md);
   }
 
-  .mini-text {
-    padding-top: var(--space-title-text-md);
-  }
-
   .medium-title {
     font-size: var(--size-medium-title-md);
   }
 
   .medium-text {
     font-size: var(--size-medium-text-md);
+  }
+
+  .sousTitle {
+    margin-top: 1vh;
+    margin-bottom: 2vw;
   }
 }

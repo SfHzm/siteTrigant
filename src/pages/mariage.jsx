@@ -32,62 +32,63 @@ export default function Mariage() {
         <Carousel slides={slides} />
       </div>
 
-      <div className="mt-[var(--space-small)]">
+      <div className="mt-[var(--space-small)] md:[var(--space-small-md)]">
         <h1 className="title">Nos formules</h1>
         <Carousel slides={formules} />
       </div>
 
-    <div className="items-center flex flex-col">
-      <img
-        src={separateur}
-        alt="separateur"
-        className="my-[var(--space-big)] w-80"
-      />
-    </div>
-
+      <div className="items-center flex flex-col">
+        <img
+          src={separateur}
+          alt="separateur"
+          className="my-[var(--space-big)] w-80 md:w-[58vw]"
+        />
+      </div>
 
       <div>
         <h1 className="title px-4">Le Domaine en Quelques Chiffres</h1>
 
-        <div className="border-2 border-accent-gold rounded-[20px] w-[90vw] mt-[var(--space-small)] mx-auto flex flex-col items-center">
-          <h2 className="mini-title" style={{ paddingTop: "2vh" }}>
-            Dans le Château
-          </h2>
-          <ul
-            className="list-disc list-inside mini-text"
-            style={{
-              paddingTop: "2vh",
-              width: "80%",
-              margin: "0 auto",
-              paddingBottom: "2vh",
-            }}
-          >
-            <li>Salle de réception « l’Orangerie » de 225m2</li>
-            <li>3 salons de 35m2</li>
-            <li>Véranda/ un jardin d’hiver de 40m2</li>
-            <li>Vestibule de 40m2</li>
-          </ul>
-        </div>
+        <div className="md:flex">
+          <div className="border-2 border-accent-gold rounded-[20px] w-[90vw] mt-[var(--space-small)] mx-auto flex flex-col items-center md:w-[44vw]">
+            <h2 className="mini-title" style={{ paddingTop: "2vh" }}>
+              Dans le Château
+            </h2>
+            <ul
+              className="list-disc list-inside mini-text"
+              style={{
+                paddingTop: "2vh",
+                width: "80%",
+                margin: "0 auto",
+                paddingBottom: "2vh",
+              }}
+            >
+              <li>Salle de réception « l’Orangerie » de 225m2</li>
+              <li>3 salons de 35m2</li>
+              <li>Véranda/ un jardin d’hiver de 40m2</li>
+              <li>Vestibule de 40m2</li>
+            </ul>
+          </div>
 
-        <div className="border-2 border-accent-gold rounded-[20px] w-[90vw] mt-[var(--space-small)] mx-auto flex flex-col items-center">
-          <h2 className="mini-title" style={{ paddingTop: "2vh" }}>
-            À l'extérieur
-          </h2>
-          <ul
-            className="list-disc list-inside mini-text"
-            style={{
-              paddingTop: "2vh",
-              width: "80%",
-              margin: "0 auto",
-              paddingBottom: "2vh",
-            }}
-          >
-            <li>Propriété de 7 hectares</li>
-            <li>Parc de 3,5 hectares</li>
-            <li>Pelouse de 4000m2</li>
-            <li>Cour intérieure arborée de 500m2</li>
-            <li>Vignoble de 3,5 hectares</li>
-          </ul>
+          <div className="border-2 border-accent-gold rounded-[20px] w-[90vw] mt-[var(--space-small)] mx-auto flex flex-col items-center md:w-[44vw]">
+            <h2 className="mini-title" style={{ paddingTop: "2vh" }}>
+              À l'extérieur
+            </h2>
+            <ul
+              className="list-disc list-inside mini-text"
+              style={{
+                paddingTop: "2vh",
+                width: "80%",
+                margin: "0 auto",
+                paddingBottom: "2vh",
+              }}
+            >
+              <li>Propriété de 7 hectares</li>
+              <li>Parc de 3,5 hectares</li>
+              <li>Pelouse de 4000m2</li>
+              <li>Cour intérieure arborée de 500m2</li>
+              <li>Vignoble de 3,5 hectares</li>
+            </ul>
+          </div>
         </div>
       </div>
 
