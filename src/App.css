@@ -29,7 +29,7 @@
   --color-text: #808080;
   --color-accent-gold: #ccac60;
   --color-accent-content: #403f3f;
-  --color-accent-gold-trans :rgba(204, 172, 96, 0.88);
+  --color-accent-gold-trans: rgba(204, 172, 96, 0.88);
   --color-back-footer: #a78540;
   --color-white-text: #ffffff;
   --color-green-accent: #4d6125;
@@ -39,10 +39,14 @@
   --color-menu-scroll: rgba(255, 255, 255, 0.7);
 
   --size-mini-title: 1.15rem;
+  --size-mini-title-lg: 1.2rem;
   --size-medium-title: 1.3rem;
   --size-medium-title-md: 1.5rem;
+  --size-medium-title-lg: 1.6vw;
   --size-medium-text-md: 1.3rem;
+  --size-medium-text-lg: 1.2vw;
   --size-mini-text: 1rem;
+  --size-mini-text-lg: 1.2rem;
   --size-micro-text: 0.9rem;
   --size-title: 1.4rem;
   --size-title-md: 1.8rem;
@@ -153,5 +157,25 @@ body {
 @media (min-width: 1024px) {
   .title {
     padding-bottom: var(--space-small-md);
+  }
+
+  .mini-title {
+    font-size: var(--size-mini-title-lg);
+  }
+
+  .mini-text {
+    font-size: var(--size-mini-text-lg);
+  }
+
+  .medium-title {
+    font-size: var(--size-medium-title-lg);
+  }
+  .medium-text {
+    font-size: var(--size-medium-text-lg);
+    width: 90%;
+  }
+
+  .other-title {
+    font-size: 1.5rem;
   }
 }

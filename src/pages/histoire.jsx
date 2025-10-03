@@ -5,7 +5,7 @@ import frame from "../assets/decorations/frame.png";
 import tableau1 from "../assets/images/tableau1.png";
 import separateur from "../assets/decorations/separateur.png";
 import tableau2 from "../assets/images/tableau2.png";
-import tableau3 from "../assets/images/tableau3.png"
+import tableau3 from "../assets/images/tableau3.png";
 
 export default function Histoire() {
   const h = ["1860 ", "1989 ", "2021", "2025"];
@@ -17,12 +17,16 @@ export default function Histoire() {
   ];
 
   return (
-    <div>
+    <div className="w-full items-center flex flex-col">
       <ImageAccueil src={mainImg} alt="Chateau Trigant" h="NOTRE HISTOIRE" />
 
-      <div className="w-full items-center flex flex-col">
-        <div className="relative inline-block mt-[var(--space-small)] md:w-[90vw]">
-          <img src={frame} alt="frame" className="block w-93 h-auto md:w-[95vw]" />
+      <div className="w-full items-center flex flex-col lg:flex-row lg:w-[90vw] lg:gap-x-15">
+        <div className="relative inline-block mt-[var(--space-small)] md:w-[90vw] lg:mt-[var(--space-big-lg)]">
+          <img
+            src={frame}
+            alt="frame"
+            className="block w-93 h-auto md:w-[95vw]"
+          />
           <img
             src={tableau1}
             alt="Tableau 1"
@@ -37,36 +41,47 @@ export default function Histoire() {
           >
             300 ans d'Histoire
           </h1>
-          <p className="medium-text">
-            Le domaine et son élégante chartreuse, construite au XVIIIe siècle
-            par Philippe Trigant, avocat au parlement de Bordeaux, constituent
-            un ensemble rare de la prestigieuse appellation Pessac-Léognan.
-          </p>
 
-          <p className="medium-text">
-            En 1860, la propriété entre dans la famille Sèze, qui la conserve
-            depuis plusieurs générations.
-          </p>
+          <div className="lg:pt-10">
+            <p className="medium-text">
+              Le domaine et son élégante chartreuse, construite au XVIIIe siècle
+              par Philippe Trigant, avocat au parlement de Bordeaux, constituent
+              un ensemble rare de la prestigieuse appellation Pessac-Léognan.
+            </p>
 
-          <p className="medium-text">
-            Château Trigant est attaché à une histoire familiale hors du commun,
-            foisonnant de corsaires, d’explorateurs et de navigateurs au long
-            cours.
-          </p>
-        </div>
+            <p className="medium-text">
+              En 1860, la propriété entre dans la famille Sèze, qui la conserve
+              depuis plusieurs générations.
+            </p>
 
-        <img
-          src={separateur}
-          alt="separateur"
-          className="my-[var(--space-big)] w-80 md:w-[58vw]"
-        />
-
-        <div className="md:flex md:justify-between md:w-[90vw]">
-          <Timeline h={h} p={p} />
-          <div className="sm:block hidden md:w-[40vw] md:flex md:flex-col md:justify-between">
-            <img src={tableau2} alt="Tableau 2" className="rounded-[5px] shadow-[black_0px_4px_7px_-1px,black_-2px_1px_8px_-1px]"/>
-            <img src={tableau3} alt="Tableau 3" className="rounded-[20px] shadow-[black_0px_4px_7px_-1px,black_0px_1px_8px_-1px]"/>
+            <p className="medium-text">
+              Château Trigant est attaché à une histoire familiale hors du
+              commun, foisonnant de corsaires, d’explorateurs et de navigateurs
+              au long cours.
+            </p>
           </div>
+        </div>
+      </div>
+
+      <img
+        src={separateur}
+        alt="separateur"
+        className="my-[var(--space-big)] w-80 md:w-[58vw] lg:w-[25vw] lg:my-[var(--space-big-lg)]"
+      />
+
+      <div className="md:flex md:justify-between md:w-[90vw] lg:mb-[var(--space-big-lg)] lg:items-center lg:justify-around lg:md-[100vw]">
+        <Timeline h={h} p={p} />
+        <div className="sm:block hidden md:w-[40vw] md:flex md:flex-col md:justify-between lg:w-fit">
+          <img
+            src={tableau2}
+            alt="Tableau 2"
+            className="rounded-[5px] shadow-[black_0px_4px_7px_-1px,black_-2px_1px_8px_-1px] lg:w-[25vw]"
+          />
+          <img
+            src={tableau3}
+            alt="Tableau 3"
+            className="rounded-[20px] shadow-[black_0px_4px_7px_-1px,black_0px_1px_8px_-1px] lg:hidden"
+          />
         </div>
       </div>
     </div>
