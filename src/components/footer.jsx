@@ -5,7 +5,7 @@ import "./footer.scss";
 
 export default function Footer() {
   return (
-    <footer className="footer w-full h-fit mt-[var(--space-big)] text-white-text gap-0">
+    <footer className="footer w-full h-fit mt-[var(--space-big)] text-white-text gap-0 lg:mt-0">
       <div className="w-[100vw] flex flex-col justify-center items-center bg-accent-gold pt-5 md:py-5">
         <div className="navbar-center flex flex-col w-fit gap-1.5 sm:hidden">
           <img src={groupLogo} alt="Group Logo" className="w-40" />
@@ -19,7 +19,7 @@ export default function Footer() {
 
         <div className="flex flex-row gap-8 h-fit">
           <div className="flex flex-col items-start md:w-[30vw] md:items-center md:justify-center">
-            <h3 className="font-abhaya-bold text-[1rem] md:text-[1.3rem] md:mb-2">
+            <h3 className="font-abhaya-bold text-[1rem] md:text-[1.3rem] md:mb-2 lg:text-[1.6rem]">
               Contact
             </h3>
             <div className="div-container">
@@ -38,11 +38,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <img src={chateau} alt="" className="hidden md:flex md:w-[30vw]" />
+            <img
+              src={chateau}
+              alt=""
+              className="hidden md:flex md:w-[30vw] lg:w-[20vw]"
+            />
           </div>
 
           <div className="flex flex-col items-end md:items-center md:w-[30vw] md:justify-center">
-            <h3 className="font-abhaya-bold text-[1rem] md:text-[1.3rem] md:mb-2">
+            <h3 className="font-abhaya-bold text-[1rem] md:text-[1.3rem] md:mb-2 lg:text-[1.6rem]">
               Adresse
             </h3>
             <div className="div-container text-right md:text-center">
