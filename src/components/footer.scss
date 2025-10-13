@@ -5,13 +5,23 @@
   .info {
     font-family: "var(--font-inter)";
   }
-
-  @media (min-width: 768px) {
+}
+@media (min-width: 768px) {
+  .div-container {
     width: fit-content;
     font-size: 0.9rem;
   }
+}
 
-  @media (min-width: 1024px) {
+@media (min-width: 1024px) {
+  .div-container {
     font-size: 1.1rem;
+  }
+  .svgHover {
+    &:hover {
+      svg {
+        fill: var(--color-accent-gold);
+      }
+    }
   }
 }
