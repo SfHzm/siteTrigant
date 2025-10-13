@@ -1,12 +1,11 @@
 import mainImg from "../assets/images/23-modified.jpg";
 import ImageAccueil from "../components/ImageAccueil";
-import PresentationPage from "../components/presentationPage";
 import { useForm } from "@formspree/react";
 import { useEffect, useState } from "react";
 
 export default function Contact() {
   // Votre ID de formulaire Formspree
-  const [state, handleSubmit, reset] = useForm("mgvnyjwj");
+  const [state, handleSubmit, reset] = useForm("mldpoldj");
 
   // Nouvel état pour gérer l'affichage du message de succès
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
