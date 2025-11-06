@@ -12,7 +12,17 @@ export default function PresentationPage({ page }) {
       <h1 className="font-abhaya-bold text-title text-2xl text-[1.4rem] md:text-3xl">
         {presentation.title}
       </h1>
-      <p className="font-inter text-text mt-[2vh] text-[1rem] md:text-lg">{presentation.text}</p>
+      <p className="font-inter text-text mt-[2vh] text-[1rem] md:text-lg">
+        {presentation.text1}
+        <span>
+          {presentation.text2 ? (
+            <>
+              <br />
+              {presentation.text2}
+            </>
+          ) : null}
+        </span>
+      </p>
     </div>
   );
 }

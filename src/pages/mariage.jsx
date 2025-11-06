@@ -27,7 +27,7 @@ export default function Mariage() {
         h="UN ECRIN DE VERDURE"
       />
 
-      <PresentationPage page="home" />
+      <PresentationPage page="mariage" />
 
       <div>
         <h1 className="title">Nos Espaces de Réception</h1>
