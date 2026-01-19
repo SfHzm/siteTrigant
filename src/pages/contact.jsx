@@ -11,25 +11,25 @@ export default function Contact() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   // État pour forcer la réinitialisation visuelle des champs (si nécessaire)
-  const [key, setKey] = useState(0); 
+  const [key, setKey] = useState(0);
 
   // Utiliser useEffect pour gérer l'état du succès et la réinitialisation
   useEffect(() => {
     let timeoutId;
-    
+
     if (state.succeeded) {
       // 1. Affiche le message immédiatement
       setShowSuccessMessage(true);
 
       // 2. Réinitialise le formulaire (Formspree) pour autoriser un nouvel envoi
-      reset(); 
+      reset();
 
       // 3. Définit un délai pour vider visuellement les champs (Key) et masquer le message
       // On masque le message après 5 secondes (5000ms) et on vide les champs
       timeoutId = setTimeout(() => {
-        setKey(prevKey => prevKey + 1); 
+        setKey((prevKey) => prevKey + 1);
         setShowSuccessMessage(false);
-      }, 5000); 
+      }, 5000);
     }
 
     // Fonction de nettoyage pour annuler le timeout si le composant est démonté
@@ -92,6 +92,23 @@ export default function Contact() {
               />
             </div>
 
+            <div>
+              <label
+                htmlFor="number"
+                className="block text-sm font-medium font-artemisia text-gray-700 mb-2"
+              >
+                Numéro de téléphone
+              </label>
+              <input
+                type="tel"
+                id="number"
+                name="number"
+                required
+                className={inputStyle}
+                disabled={state.submitting}
+              />
+            </div>
+
             {/* Champ Sujet */}
             <div>
               <label
@@ -141,16 +158,25 @@ export default function Contact() {
             </div>
 
             {/* Messages de retour */}
-            {(showSuccessMessage || (state.errors && state.errors.length > 0)) && (
-                <div className={`text-center p-3 rounded-md ${showSuccessMessage ? 'bg-green-100 border border-green-400' : 'bg-red-100 border border-red-400'}`}>
-                    <p className={`text-sm font-inter ${showSuccessMessage ? 'text-green-700' : 'text-red-700'}`}>
-                        {showSuccessMessage ? (
-                            '✅ Merci ! Votre message a été envoyé avec succès. Nous vous répondrons bientôt.'
-                        ) : (
-                            '❌ **Erreur :** Une erreur s\'est produite lors de l\'envoi. Veuillez réessayer.'
-                        )}
-                    </p>
-                </div>
+            {(showSuccessMessage ||
+              (state.errors && state.errors.length > 0)) && (
+              <div
+                className={`text-center p-3 rounded-md ${
+                  showSuccessMessage
+                    ? "bg-green-100 border border-green-400"
+                    : "bg-red-100 border border-red-400"
+                }`}
+              >
+                <p
+                  className={`text-sm font-inter ${
+                    showSuccessMessage ? "text-green-700" : "text-red-700"
+                  }`}
+                >
+                  {showSuccessMessage
+                    ? "✅ Merci ! Votre message a été envoyé avec succès. Nous vous répondrons bientôt."
+                    : "❌ **Erreur :** Une erreur s'est produite lors de l'envoi. Veuillez réessayer."}
+                </p>
+              </div>
             )}
 
             <p className="text-center text-xs text-gray-500 mt-4">
