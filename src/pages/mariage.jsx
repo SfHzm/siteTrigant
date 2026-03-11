@@ -13,11 +13,34 @@ import maries from "../assets/images/galerieMariage/maries.jpg";
 import cour_nuit from "../assets/images/galerieMariage/cour_nuit.png";
 import tables from "../assets/images/galerieMariage/tables.jpg";
 import room from "../assets/images/galerieMariage/room.jpg";
-import dance from "../assets/images/galerieMariage/dance.jpg"
-import bathroom from "../assets/images/galerieMariage/bathroom.jpg"
+import dance from "../assets/images/galerieMariage/dance.jpg";
+import bathroom from "../assets/images/galerieMariage/bathroom.jpg";
+import firstRoom from "../assets/images/galerieMariage/chambre1.jpg";
+import bathroomTwo from "../assets/images/galerieMariage/chambre2-sbd-bis.jpg";
+import secondRoom from "../assets/images/galerieMariage/chambre2.jpg";
+import fourthRoomBathroom from "../assets/images/galerieMariage/chambre4-sbd.jpg";
+import fifthRoom from "../assets/images/galerieMariage/chambre5.jpg";
+import sixthRoom from "../assets/images/galerieMariage/chambre6.jpg";
+import eigthRoom from "../assets/images/galerieMariage/chambre8-PMR-dortoir.jpg";
 
 export default function Mariage() {
-  const images = [pelouse, toast, maries, cour_nuit, tables, dance, room, bathroom];
+  const images = [
+    pelouse,
+    toast,
+    maries,
+    cour_nuit,
+    tables,
+    dance,
+    room,
+    fourthRoomBathroom,
+    bathroom,
+    firstRoom,
+    secondRoom,
+    bathroomTwo,
+    fifthRoom,
+    sixthRoom,
+    eigthRoom,
+  ];
 
   return (
     <div>
@@ -52,7 +75,10 @@ export default function Mariage() {
 
         <div className="md:flex">
           <div className="border-2 border-accent-gold rounded-[20px] w-[90vw] mt-[var(--space-small)] mx-auto flex flex-col items-center md:w-[44vw] lg:w-[35vw]">
-            <h2 className="mini-title other-title" style={{ paddingTop: "2vh" }}>
+            <h2
+              className="mini-title other-title"
+              style={{ paddingTop: "2vh" }}
+            >
               Dans le Château
             </h2>
             <ul
@@ -62,7 +88,7 @@ export default function Mariage() {
                 width: "80%",
                 margin: "0 auto",
                 paddingBottom: "2vh",
-                textAlign: "left"
+                textAlign: "left",
               }}
             >
               <li>Salle de réception « l’Orangerie » de 225m2</li>
@@ -73,17 +99,20 @@ export default function Mariage() {
           </div>
 
           <div className="border-2 border-accent-gold rounded-[20px] w-[90vw] mt-[var(--space-small)] mx-auto flex flex-col items-center md:w-[44vw] lg:w-[35vw]">
-            <h2 className="mini-title other-title" style={{ paddingTop: "2vh" }}>
+            <h2
+              className="mini-title other-title"
+              style={{ paddingTop: "2vh" }}
+            >
               À l'extérieur
             </h2>
             <ul
-              className="list-disc list-inside mini-text" 
+              className="list-disc list-inside mini-text"
               style={{
                 paddingTop: "2vh",
                 width: "80%",
                 margin: "0 auto",
                 paddingBottom: "2vh",
-                textAlign: "left"
+                textAlign: "left",
               }}
             >
               <li>Propriété de 7 hectares</li>
