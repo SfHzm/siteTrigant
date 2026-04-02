@@ -69,7 +69,7 @@ function PopUp({
           <img
             src={currentImage}
             alt="fullscreen view"
-            className=" max-w-73 md:max-w-[80vw] max-h-[75vh] object-contain rounded-lg shadow-2xl"
+            className="max-w-73 md:max-w-[80vw] lg:max-w-[90vw] max-h-[75vh] object-contain rounded-lg shadow-2xl"
           />
 
           <button

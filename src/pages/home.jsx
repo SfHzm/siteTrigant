@@ -5,14 +5,23 @@ import jardin_nuit from "../assets/images/jardin_nuit_mariage.jpg";
 
 import ImageAccueil from "../components/ImageAccueil";
 import Carousel from "../components/carousel";
+import LoadingSpinner from "../components/LoadingSpinner";
 import slides from "../data/slidesEspaces.json";
 import { Link } from "react-router-dom";
 import PresentationPage from "../components/presentationPage";
+import { useState } from "react";
 
 export default function Home() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div>
-      <ImageAccueil src={mainImg} alt="Chateau Trigant" />
+      {!imageLoaded && <LoadingSpinner />}
+      <ImageAccueil
+        src={mainImg}
+        alt="Chateau Trigant"
+        onImageLoaded={() => setImageLoaded(true)}
+      />
 
       <PresentationPage page="home" />
 

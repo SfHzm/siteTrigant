@@ -1,13 +1,17 @@
 import ImageAccueil from "../components/ImageAccueil";
 import Timeline from "../components/timeline";
+import LoadingSpinner from "../components/LoadingSpinner";
 import mainImg from "../assets/images/entree_modified.png";
 import frame from "../assets/decorations/frame.png";
 import tableau1 from "../assets/images/tableau1.png";
 import separateur from "../assets/decorations/separateur.png";
 import tableau2 from "../assets/images/tableau2.png";
 import tableau3 from "../assets/images/tableau3.png";
+import { useState } from "react";
 
 export default function Histoire() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const h = ["1860 ", "1989 ", "2021", "2025"];
   const p = [
     "Acquisition de la propriété par la famille Sèze",
@@ -18,7 +22,13 @@ export default function Histoire() {
 
   return (
     <div className="w-full items-center flex flex-col">
-      <ImageAccueil src={mainImg} alt="Chateau Trigant" h="NOTRE HISTOIRE" />
+      {!imageLoaded && <LoadingSpinner />}
+      <ImageAccueil
+        src={mainImg}
+        alt="Chateau Trigant"
+        h="NOTRE HISTOIRE"
+        onImageLoaded={() => setImageLoaded(true)}
+      />
 
       <div className="w-full items-center flex flex-col lg:flex-row lg:w-[90vw] lg:gap-x-15">
         <div className="relative inline-block mt-[var(--space-small)] md:w-[90vw] lg:mt-[var(--space-big-lg)]">

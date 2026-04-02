@@ -6,6 +6,7 @@ import Mariage from "./pages/mariage";
 import MentionsLegales from "./pages/mentions.jsx";
 import Contact from "./pages/contact.jsx";
 import Layout from "./pages/layout";
+import Confidentialite from "./pages/confidentialite.jsx";
 import "./App.css";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/mariage" element={<Mariage />} />
           <Route path="/mentionslegales" element={<MentionsLegales />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/confidentialite" element={<Confidentialite />} />
         </Route>
       </Routes>
     </BrowserRouter>

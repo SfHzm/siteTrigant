@@ -1,4 +1,5 @@
 import ImageAccueil from "../components/ImageAccueil";
+import LoadingSpinner from "../components/LoadingSpinner";
 import mainImg from "../assets/images/pelouse.png";
 import PresentationPage from "../components/presentationPage";
 import Carousel from "../components/carousel";
@@ -7,8 +8,8 @@ import formules from "../data/formulesMariage.json";
 import Galerie from "../components/galerie";
 import separateur from "../assets/decorations/separateur.png";
 
-import pelouse from "../assets/images/galerieMariage/pelouse.jpg";
-import toast from "../assets/images/galerieMariage/toast.jpg";
+import pelouse from "../assets/images/galerieMariage/pelouse.png";
+import toast from "../assets/images/galerieMariage/toast.png";
 import maries from "../assets/images/galerieMariage/maries.jpg";
 import cour_nuit from "../assets/images/galerieMariage/cour_nuit.png";
 import tables from "../assets/images/galerieMariage/tables.jpg";
@@ -22,8 +23,11 @@ import fourthRoomBathroom from "../assets/images/galerieMariage/chambre4-sdb.jpg
 import fifthRoom from "../assets/images/galerieMariage/chambre5.jpg";
 import sixthRoom from "../assets/images/galerieMariage/chambre6.jpg";
 import eigthRoom from "../assets/images/galerieMariage/chambre8-PMR-dortoir.jpg";
+import { useState } from "react";
 
 export default function Mariage() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const images = [
     pelouse,
     toast,
@@ -44,10 +48,12 @@ export default function Mariage() {
 
   return (
     <div>
+      {!imageLoaded && <LoadingSpinner />}
       <ImageAccueil
         src={mainImg}
         alt="Chateau Trigant"
         h={`VOTRE MARIAGE\nDANS UN ECRIN DE VERDURE`}
+        onImageLoaded={() => setImageLoaded(true)}
       />
 
       <PresentationPage page="mariage" />
@@ -125,7 +131,7 @@ export default function Mariage() {
         </div>
       </div>
 
-      <div className="my-[var(--space-small)] lg:my-[var(--space-big-lg)]">
+      <div className="mt-[var(--space-small)] lg:mt-[var(--space-big-lg)] lg:mb-[var(--space-small)]">
         <h1 className="title">Galerie Photos</h1>
         <Galerie images={images} />
       </div>

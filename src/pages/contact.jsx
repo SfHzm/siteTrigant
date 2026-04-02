@@ -1,5 +1,6 @@
 import mainImg from "../assets/images/23-modified.jpg";
 import ImageAccueil from "../components/ImageAccueil";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { useForm } from "@formspree/react";
 import { useEffect, useState } from "react";
 
@@ -12,6 +13,9 @@ export default function Contact() {
 
   // État pour forcer la réinitialisation visuelle des champs (si nécessaire)
   const [key, setKey] = useState(0);
+
+  // État pour gérer le chargement de l'image
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   // Utiliser useEffect pour gérer l'état du succès et la réinitialisation
   useEffect(() => {
@@ -48,7 +52,12 @@ export default function Contact() {
 
   return (
     <div>
-      <ImageAccueil src={mainImg} alt="Image Contact" />
+      {!imageLoaded && <LoadingSpinner />}
+      <ImageAccueil
+        src={mainImg}
+        alt="Image Contact"
+        onImageLoaded={() => setImageLoaded(true)}
+      />
 
       <div className="flex justify-center items-center mt-[var(--space-big)] mb-[var(--space-big)] lg:mt-[var(--space-big-lg)] lg:mb-[var(--space-big-lg)]">
         <div className="w-[90vw] md:w-[70vw] lg:w-[50vw] p-5 md:p-10 bg-base-100 shadow-xl rounded-lg">

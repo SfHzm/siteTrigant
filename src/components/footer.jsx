@@ -6,7 +6,7 @@ import "./footer.scss";
 
 export default function Footer() {
   return (
-    <footer className="footer w-full h-fit mt-[var(--space-big)] text-white-text gap-0 lg:mt-0">
+    <footer className="footer w-full h-fit mt-[var(--space-small)]  md:mt-[var(--space-big)] text-white-text gap-0 lg:mt-0">
       <div className="w-[100vw] flex flex-col justify-center items-center bg-accent-gold pt-5 md:py-5">
         <div className="navbar-center flex flex-col w-fit gap-1.5 sm:hidden">
           <img src={groupLogo} alt="Group Logo" className="w-40" />
@@ -96,7 +96,8 @@ export default function Footer() {
       <div className="bg-accent-gold w-[100vw] items-center pb-5 md:bg-back-footer md:py-4">
         <p className="font-bold text-xs text-center mt-4 w-[100vw] md:mt-0 md:text-[0.8rem]">
           Château Trigant © 2025 - Tous droits réservés -
-          <Link to={"/mentionslegales"}> Mentions Légales</Link>
+          <Link to={"/mentionslegales"}> Mentions Légales</Link> -
+          <Link to={"/confidentialite"}> Politique de Confidentialité</Link>
         </p>
       </div>
     </footer>
