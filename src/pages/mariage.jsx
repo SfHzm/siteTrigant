@@ -1,5 +1,5 @@
 import ImageAccueil from "../components/ImageAccueil";
-import mainImg from "../assets/images/pelouse.jpg";
+import mainImg from "../assets/images/pelouse.png";
 import PresentationPage from "../components/presentationPage";
 import Carousel from "../components/carousel";
 import slides from "../data/slidesEspaces.json";
@@ -47,7 +47,7 @@ export default function Mariage() {
       <ImageAccueil
         src={mainImg}
         alt="Chateau Trigant"
-        h="UN ECRIN DE VERDURE"
+        h={`VOTRE MARIAGE\nDANS UN ECRIN DE VERDURE`}
       />
 
       <PresentationPage page="mariage" />

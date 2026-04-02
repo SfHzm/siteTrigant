@@ -56,7 +56,7 @@ export default function Home() {
             </p>
             <Link
               to="/mariage"
-              className="btn btn-xs shadow-no sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl border-1 rounded-xs border-accent-content text-accent-content font-normal font-abhaya text-sm float-right mt-5 p-4 md:mr-[3vw]"
+              className="btn btn-xs shadow-no sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl border-1 rounded-xs border-accent-content text-accent-content font-normal font-artemisia text-sm float-right mt-5 p-4 md:mr-[3vw]"
             >
               En savoir +
             </Link>
@@ -65,7 +65,7 @@ export default function Home() {
           <div className="hidden lg:flex absolute bottom-10 h-fit right-10 -translate-y-1/2">
             <Link
               to="/mariage"
-              className="btn shadow-no border-1 rounded-[5px] border-accent-content text-accent-content bg-accent-gold font-normal font-abhaya p-6 text-lg"
+              className="btn shadow-no border-1 rounded-[5px] border-accent-content text-accent-content bg-accent-gold font-normal font-artemisia p-6 text-lg"
             >
               Découvrir nos Mariages &nbsp; →
             </Link>

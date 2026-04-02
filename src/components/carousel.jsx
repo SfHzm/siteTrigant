@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import PopUp from "./popup";
 
 export default function Carousel({ slides }) {
   const carouselRef = useRef(null);
@@ -7,6 +8,11 @@ export default function Carousel({ slides }) {
   const isClickScrolling = useRef(false);
   const [current, setCurrent] = useState(0);
   const [numVisible, setNumVisible] = useState(1);
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Tableau de toutes les images du carousel
+  const imagesList = slides.map(slide => slide.image);
 
   const length = slides.length;
 
@@ -94,7 +100,7 @@ export default function Carousel({ slides }) {
 
     setTimeout(() => {
       isClickScrolling.current = false;
-    }, 800); 
+    }, 800);
   };
 
   return (
@@ -112,55 +118,111 @@ export default function Carousel({ slides }) {
           >
             {/* Image */}
             {slide.variant === "shadowTLeft" ? (
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-70 h-40 mt-[13px] shadow-[-28px_-28px_0px_-15px_var(--color-accent-gold)] ml-[14px]"
-              />
-            ) : slide.variant === "gold-barTop" ? (
-              <div className="relative inline-block mt-[13px]">
+              <button
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                  setShowPopUp(true);
+                }}
+                className="hover:opacity-90 transition-opacity"
+              >
                 <img
                   src={slide.image}
                   alt={slide.title}
-                  className="w-70 h-40 block"
+                  className="w-70 h-40 mt-[13px] shadow-[-28px_-28px_0px_-15px_var(--color-accent-gold)] ml-[14px] cursor-pointer"
+                />
+              </button>
+            ) : slide.variant === "gold-barTop" ? (
+              <button
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                  setShowPopUp(true);
+                }}
+                className="relative inline-block mt-[13px] hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-70 h-40 block cursor-pointer"
                 />
                 <div
                   className="absolute w-76 h-1/2 left-1/2 transform -translate-x-1/2 top-[-13px] bg-accent-gold"
                   style={{ zIndex: -12 }}
                 ></div>
-              </div>
+              </button>
             ) : slide.variant === "shadowTRight" ? (
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-70 h-40 mt-[13px] shadow-[28px_-28px_0px_-15px_var(--color-accent-gold)] mr-[14px]"
-              />
-            ) : slide.variant === "shadowLeft" ? (
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-70 h-40 shadow-[-28px_28px_0px_-15px_var(--color-accent-gold)] ml-[14px] mb-[13px]"
-              />
-            ) : slide.variant === "gold-bar" ? (
-              <div className="relative inline-block mb-[13px]">
+              <button
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                  setShowPopUp(true);
+                }}
+                className="hover:opacity-90 transition-opacity"
+              >
                 <img
                   src={slide.image}
                   alt={slide.title}
-                  className="w-70 h-40 block"
+                  className="w-70 h-40 mt-[13px] shadow-[28px_-28px_0px_-15px_var(--color-accent-gold)] mr-[14px] cursor-pointer"
+                />
+              </button>
+            ) : slide.variant === "shadowLeft" ? (
+              <button
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                  setShowPopUp(true);
+                }}
+                className="hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-70 h-40 shadow-[-28px_28px_0px_-15px_var(--color-accent-gold)] ml-[14px] mb-[13px] cursor-pointer"
+                />
+              </button>
+            ) : slide.variant === "gold-bar" ? (
+              <button
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                  setShowPopUp(true);
+                }}
+                className="relative inline-block mb-[13px] hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-70 h-40 block cursor-pointer"
                 />
                 <div
                   className="absolute w-76 h-1/2 left-1/2 transform -translate-x-1/2 bottom-[-13px] bg-accent-gold"
                   style={{ zIndex: -12 }}
                 ></div>
-              </div>
+              </button>
             ) : slide.variant === "shadowRight" ? (
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-70 h-40 shadow-[28px_28px_0px_-15px_var(--color-accent-gold)] mr-[14px] mb-[13px]"
-              />
+              <button
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                  setShowPopUp(true);
+                }}
+                className="hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-70 h-40 shadow-[28px_28px_0px_-15px_var(--color-accent-gold)] mr-[14px] mb-[13px] cursor-pointer"
+                />
+              </button>
             ) : (
-              <img src={slide.image} alt={slide.title} className="w-70 h-40" />
+              <button
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                  setShowPopUp(true);
+                }}
+                className="hover:opacity-90 transition-opacity"
+              >
+                <img 
+                  src={slide.image} 
+                  alt={slide.title} 
+                  className="w-70 h-40 cursor-pointer" 
+                />
+              </button>
             )}
 
             {/* Texte */}
@@ -178,7 +240,7 @@ export default function Carousel({ slides }) {
       </div>
 
       {/* Points de navigation */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {Array.from({ length: numButtons }).map((_, index) => (
           <button
             key={index}
@@ -189,6 +251,15 @@ export default function Carousel({ slides }) {
           ></button>
         ))}
       </div>
+
+      {/* PopUp pour les images */}
+      <PopUp 
+        showPopUp={showPopUp} 
+        closePopUp={() => setShowPopUp(false)}
+        images={imagesList}
+        currentImageIndex={currentImageIndex}
+        setCurrentImageIndex={setCurrentImageIndex}
+      />
     </div>
   );
 }

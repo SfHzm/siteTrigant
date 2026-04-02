@@ -20,7 +20,7 @@ export default function Footer() {
 
         <div className="flex flex-row gap-8 h-fit">
           <div className="flex flex-col items-start md:w-[30vw] md:items-center md:justify-center">
-            <h3 className="font-abhaya-bold text-[1rem] md:text-[1.3rem] md:mb-2 lg:text-[1.6rem]">
+            <h3 className="font-artemisia-bold text-[1rem] md:text-[1.3rem] md:mb-2 lg:text-[1.6rem]">
               Contact
             </h3>
             <div className="div-container">
@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-end md:items-center md:w-[30vw] md:justify-center">
-            <h3 className="font-abhaya-bold text-[1rem] md:text-[1.3rem] md:mb-2 lg:text-[1.6rem]">
+            <h3 className="font-artemisia-bold text-[1rem] md:text-[1.3rem] md:mb-2 lg:text-[1.6rem]">
               Adresse
             </h3>
             <div className="div-container text-right md:text-center">

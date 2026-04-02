@@ -13,15 +13,6 @@
   src: url("./assets/fonts/gfs_artemisia/GFSArtemisiaBold.ttf");
 }
 
-@font-face {
-  font-family: "Abhaya Libre Regular";
-  src: url("./assets/fonts/Abhaya-Libre-Font/AbhayaLibre-Regular.ttf");
-}
-
-@font-face {
-  font-family: "Abhaya Libre Bold";
-  src: url("./assets/fonts/Abhaya-Libre-Font/AbhayaLibre-Bold.ttf");
-}
 
 @theme trigantTheme {
   --color-bg: #ffffff;
@@ -55,8 +46,6 @@
   --font-artemisia: "GFS Artemisia", serif;
   --font-artemisia-bold: "GFS Artemisia Bold", serif;
   --font-inter: "Inter", sans-serif;
-  --font-abhaya: "Abhaya Libre Regular", serif;
-  --font-abhaya-bold: "Abhaya Libre Bold", serif;
 
   --space-small: 6vh;
   --space-small-md: 4vh;

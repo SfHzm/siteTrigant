@@ -149,7 +149,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={state.submitting}
-                className="btn w-full shadow-no sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl border-1 rounded-xs border-accent-content text-accent-content font-normal font-abhaya text-sm p-4 md:p-6 hover:bg-accent-gold hover:text-white transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn w-full shadow-no sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl border-1 rounded-xs border-accent-content text-accent-content font-normal font-artemisia text-sm p-4 md:p-6 hover:bg-accent-gold hover:text-white transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {state.submitting
                   ? "Envoi en cours..."
