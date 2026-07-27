@@ -11,18 +11,29 @@ import separateur from "../assets/decorations/separateur.png";
 import pelouse from "../assets/images/galerieMariage/pelouse.png";
 import toast from "../assets/images/galerieMariage/toast.png";
 import maries from "../assets/images/galerieMariage/maries.jpg";
+import tables_fleurs from "/images/formule1.webp";
+import table_decoree from "../assets/images/galerieMariage/table_decoree.webp";
+import buffet from "../assets/images/galerieMariage/buffet.jpg";
 import cour_nuit from "../assets/images/galerieMariage/cour_nuit.png";
 import tables from "../assets/images/galerieMariage/tables.jpg";
 import room from "../assets/images/galerieMariage/room.jpg";
 import dance from "../assets/images/galerieMariage/dance.jpg";
-import bathroom from "../assets/images/galerieMariage/bathroom.jpg";
-import firstRoom from "../assets/images/galerieMariage/chambre1.jpg";
-import bathroomTwo from "../assets/images/galerieMariage/chambre2-sdb-bis.jpg";
-import secondRoom from "../assets/images/galerieMariage/chambre2.jpg";
-import fourthRoomBathroom from "../assets/images/galerieMariage/chambre4-sdb.jpg";
-import fifthRoom from "../assets/images/galerieMariage/chambre5.jpg";
-import sixthRoom from "../assets/images/galerieMariage/chambre6.jpg";
-import eigthRoom from "../assets/images/galerieMariage/chambre8-PMR-dortoir.jpg";
+import vueAerienne1 from "../assets/images/galerieMariage/vueAerienne1.jpg";
+import vueAerienne2 from "../assets/images/galerieMariage/vueAerienne2.jpg";
+import allee from "../assets/images/galerieMariage/allee.png";
+import cuisine from "../assets/images/galerieMariage/cuisine.jpg";
+import chambre1_large from "../assets/images/galerieMariage/chambre1-large.jpg";
+import chambre1_lit from "../assets/images/galerieMariage/chambre1-lit.jpg";
+import chambre1_sdb from "../assets/images/galerieMariage/chambre1-sdb.jpg";
+import chambre2 from "../assets/images/galerieMariage/chambre2.jpg";
+import chambre3 from "../assets/images/galerieMariage/chambre3.jpg";
+import chambre3_sdb from "../assets/images/galerieMariage/chambre3-sdb.jpg";
+import chambre4 from "../assets/images/galerieMariage/chambre4.jpg";
+import chambre4_sdb from "../assets/images/galerieMariage/chambre4-sdb.jpg";
+import chambre5 from "../assets/images/galerieMariage/chambre5.jpg";
+import chambre6 from "../assets/images/galerieMariage/chambre6.jpg";
+import chambre8 from "../assets/images/galerieMariage/chambre8-PMR1.jpg";
+import chambre8_2 from "../assets/images/galerieMariage/chambre8-PMR2.jpg";
 import { useState } from "react";
 
 export default function Mariage() {
@@ -32,18 +43,28 @@ export default function Mariage() {
     pelouse,
     toast,
     maries,
+    tables_fleurs,
+    table_decoree,
+    buffet,
     cour_nuit,
     tables,
     dance,
-    room,
-    fourthRoomBathroom,
-    bathroom,
-    firstRoom,
-    secondRoom,
-    bathroomTwo,
-    fifthRoom,
-    sixthRoom,
-    eigthRoom,
+    vueAerienne2,
+    vueAerienne1,
+    allee,
+    cuisine,
+    chambre1_large,
+    chambre1_lit,
+    chambre1_sdb,
+    chambre2,
+    chambre3,
+    chambre3_sdb,
+    chambre4,
+    chambre4_sdb,
+    chambre5,
+    chambre6,
+    chambre8,
+    chambre8_2,
   ];
 
   return (
