@@ -6,9 +6,9 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - api
+      - front-trigant-api
 
-  api:
+  front-trigant-api:
     build:
       context: .
       dockerfile: Dockerfile-api
