@@ -16,7 +16,6 @@ import table_decoree from "../assets/images/galerieMariage/table_decoree.webp";
 import buffet from "../assets/images/galerieMariage/buffet.jpg";
 import cour_nuit from "../assets/images/galerieMariage/cour_nuit.png";
 import tables from "../assets/images/galerieMariage/tables.jpg";
-import room from "../assets/images/galerieMariage/room.jpg";
 import dance from "../assets/images/galerieMariage/dance.jpg";
 import vueAerienne1 from "../assets/images/galerieMariage/vueAerienne1.jpg";
 import vueAerienne2 from "../assets/images/galerieMariage/vueAerienne2.jpg";
@@ -118,7 +117,8 @@ export default function Mariage() {
                 textAlign: "left",
               }}
             >
-              <li>Salle de réception « l’Orangerie » de 225m2</li>
+              {/*es */}
+              <li>Salle de réception « l’Orangerie » de 225m2</li>
               <li>3 salons de 35m2</li>
               <li>Véranda/ un jardin d’hiver de 40m2</li>
               <li>Vestibule de 40m2</li>

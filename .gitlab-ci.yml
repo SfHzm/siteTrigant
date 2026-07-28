@@ -6,14 +6,14 @@ stages:
   - deploy-ssh
 
 variables:
-    ID: ${CI_COMMIT_SHORT_SHA}
-    GIT_SUBMODULE_STRATEGY: recursive
-    VER: ${CI_COMMIT_REF_NAME}_1.0-${CI_PIPELINE_ID}
-    SSH_SERVER: $SSH_SERVER_TRIGANT
-    SSH_CMD: "ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY"
-    SSH_USER: "docker_deploy"
-    SSH_PORT_WWW1: "2254"
-    
+  ID: ${CI_COMMIT_SHORT_SHA}
+  GIT_SUBMODULE_STRATEGY: recursive
+  VER: ${CI_COMMIT_REF_NAME}_1.0-${CI_PIPELINE_ID}
+  SSH_SERVER: $SSH_SERVER_TRIGANT
+  SSH_CMD: "ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY"
+  SSH_USER: "docker_deploy"
+  SSH_PORT_WWW1: "2254"
+
 workflow:
   rules:
     - if: $CI_COMMIT_REF_NAME == 'test-deploy'
@@ -51,22 +51,22 @@ job-bash_exemple:
     - when: never
   script:
     - |-
-        echo "on rentre dans le IF"
-        if [[ $CI_COMMIT_REF_NAME == 'test/deploy' ]]; then
-          echo "On est dans la branche $CI_COMMIT_REF_NAME"
-        elif [[ $CI_COMMIT_REF_NAME == 'main' ]]; then
-          echo "On est dans la branche $CI_COMMIT_REF_NAME"
-        else
-          echo "ou pas"
-        fi
+      echo "on rentre dans le IF"
+      if [[ $CI_COMMIT_REF_NAME == 'test/deploy' ]]; then
+        echo "On est dans la branche $CI_COMMIT_REF_NAME"
+      elif [[ $CI_COMMIT_REF_NAME == 'main' ]]; then
+        echo "On est dans la branche $CI_COMMIT_REF_NAME"
+      else
+        echo "ou pas"
+      fi
 
 local-build:
   stage: local
-  when : manual
-  tags :
+  when: manual
+  tags:
     - docker
   image: node:lts
-  script: 
+  script:
     - echo "Start building App"
     - npm install
     - npm run build
@@ -74,13 +74,13 @@ local-build:
   artifacts:
     expire_in: 1 hour
     paths:
-    - dist
-    - node_modules/
+      - dist
+      - node_modules/
 
 local-test:
   stage: local
-  when : manual
-  tags :
+  when: manual
+  tags:
     - docker
   image: node:lts
   script:
@@ -90,7 +90,7 @@ local-test:
 
 docker-build:
   stage: docker
-  when : manual
+  when: manual
   only:
     - main
     - dev
@@ -109,9 +109,10 @@ docker-build:
   timeout: 12h
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}:$VER ${CI_PROJECT_DIR}
-  after_script:    
+    - docker build -f Dockerfile-api -t ${CI_REGISTRY_IMAGE}/api:$VER ${CI_PROJECT_DIR}
+  after_script:
     - rm -f .env
-    
+
 upload-to-registry:
   stage: docker
   when: manual
@@ -124,6 +125,7 @@ upload-to-registry:
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker push ${CI_REGISTRY_IMAGE}:$VER
+    - docker push ${CI_REGISTRY_IMAGE}/api:$VER
 
 deploy-trigant:
   stage: deploy-ssh
@@ -139,7 +141,21 @@ deploy-trigant:
   script:
     - chmod 600 $SSH_PRIVATE_KEY
     - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+
+    # --- image front ---
     - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker pull ${CI_REGISTRY_IMAGE}:$VER"
     - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker stop $DOCKER_CONTAINER_NAME || true && docker rm $DOCKER_CONTAINER_NAME || true"
+
+    # --- image api ---
+    - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker pull ${CI_REGISTRY_IMAGE}/api:$VER"
+    - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker stop ${DOCKER_CONTAINER_NAME}-api || true && docker rm ${DOCKER_CONTAINER_NAME}-api || true"
+
+    # --- réseau partagé (créé une fois, réutilisé ensuite) ---
     - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "if ! docker network ls | grep -q $DOCKER_NETWORK_NAME ; then docker network create $DOCKER_NETWORK_NAME ; fi"
+
+    # --- lancement api : nom de conteneur stable, requis pour que
+    #     `proxy_pass http://<nom>-api:4000` fonctionne côté nginx.conf ---
+    - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker run -dit --network $DOCKER_NETWORK_NAME --name ${DOCKER_CONTAINER_NAME}-api -e INSTAGRAM_ACCESS_TOKEN=$INSTAGRAM_ACCESS_TOKEN ${CI_REGISTRY_IMAGE}/api:$VER"
+
+    # --- lancement front ---
     - $SSH_CMD -p $SSH_PORT_WWW1 $SSH_USER@$SSH_SERVER "docker run -p $DOCKER_EXPOSER_PORT:80 -dit --network $DOCKER_NETWORK_NAME --name $DOCKER_CONTAINER_NAME ${CI_REGISTRY_IMAGE}:$VER"

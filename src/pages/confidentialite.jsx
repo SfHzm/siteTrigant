@@ -4,7 +4,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import mainImg from "../assets/images/23-modified.jpg";
 import { useState } from "react";
 
-export default function confidentialite() {
+export default function Confidentialite() {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
