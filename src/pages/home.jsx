@@ -9,6 +9,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import slides from "../data/slidesEspaces.json";
 import { Link } from "react-router-dom";
 import PresentationPage from "../components/presentationPage";
+import { InstagramFeed } from "../components/instagramFeed";
 import { useState } from "react";
 
 export default function Home() {
@@ -30,7 +31,7 @@ export default function Home() {
         <Carousel slides={slides} />
       </div>
 
-      <div className="flex justify-between items-center mt-[var(--space-big)] md:mt-[var(--space-big-md)] lg:mb-[var(--space-big-lg)] lg:mt-0">
+      <div className="flex justify-between items-center mt-[var(--space-big)] md:mt-[var(--space-big-md)] lg:mb-0 lg:mt-0">
         <img
           src={vigne_gauche}
           alt=""
@@ -42,6 +43,13 @@ export default function Home() {
           className="w-40 md:w-[40vw] lg:w-[20vw]"
         />
       </div>
+
+      <InstagramFeed
+        instagramUrl="https://www.instagram.com/chateau.trigant"
+        locale="fr"
+        limit={12}
+        labels={{ title: "Nos actualités sur Instagram" }}
+      />
 
       <div className="w-full flex justify-center items-center mt-[var(--space-big)] lg:mt-[var(--space-big-lg)]">
         <div className="flex flex-col items-center w-[90vw] py-[2.5vw] h-fit bg-accent-gold md:relative md:w-[95vw] md:py-[1.7vw] lg:w-[100vw] lg:py-0 lg:h-fit">

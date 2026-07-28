@@ -1,0 +1,15 @@
+# Étape de build : installe les dépendances dans un environnement complet.
+FROM node:lts AS build
+WORKDIR /app
+COPY server/package.json server/package-lock.json* ./
+RUN npm install --omit=dev
+COPY server/ ./
+
+# Étape d'exécution : image minimale, ne contient que ce qui est nécessaire
+# pour lancer le serveur (pas d'outils de build, pas de cache npm).
+FROM node:lts-slim
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /app ./
+EXPOSE 4000
+CMD ["node", "index.js"]
