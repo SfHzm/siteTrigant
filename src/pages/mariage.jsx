@@ -13,6 +13,7 @@ import toast from "../assets/images/galerieMariage/toast.jpg";
 import maries from "/images/cour.jpg";
 import tables_fleurs from "/images/formule1.webp";
 import table_decoree from "../assets/images/galerieMariage/table_decoree.webp";
+import table_decoree2 from "../assets/images/galerieMariage/tables_2.jpg";
 import buffet from "../assets/images/galerieMariage/buffet.jpg";
 import cour_nuit from "../assets/images/galerieMariage/cour_nuit.jpg";
 import tables from "../assets/images/galerieMariage/tables.jpg";
@@ -42,6 +43,7 @@ export default function Mariage() {
     pelouse,
     toast,
     maries,
+    table_decoree2,
     tables_fleurs,
     table_decoree,
     buffet,
