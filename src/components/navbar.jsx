@@ -73,7 +73,7 @@ export default function Navbar() {
           </label>
           <ul
             tabIndex="0"
-            className={`menu bg-menu absolute top-0 text-white-text divide-y-1 divide-white-text font-artemisia text-sm w-50 h-60 py-12 items-center my-slide-menu md:w-[40vw] md:h-fit md:text-lg lg:w-70 lg:py-20
+            className={`menu bg-menu absolute top-0 text-white-text divide-y-1 divide-white-text font-artemisia text-sm w-50 h-60 py-12 items-center my-slide-menu md:w-[40vw] h-fit md:text-lg lg:w-70 lg:py-20
               ${menuOpen ? "open" : "closed"}`}
             style={{ zIndex: 60 }}
           >
@@ -103,6 +103,15 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
             >
               MARIAGES
+            </Link>
+            <Link
+              to="/seminaire"
+              className={`link-container ${
+                location.pathname === "/seminaire" ? "text-accent-gold" : ""
+              }`}
+              onClick={() => setMenuOpen(false)}
+            >
+              EVENEMENTS PROFESSIONNELS
             </Link>
           </ul>
         </div>

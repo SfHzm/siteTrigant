@@ -13,7 +13,6 @@
   src: url("./assets/fonts/gfs_artemisia/GFSArtemisiaBold.ttf");
 }
 
-
 @theme trigantTheme {
   --color-bg: #ffffff;
   --color-title: #666;

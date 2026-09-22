@@ -6,6 +6,10 @@
     font-family: "var(--font-inter)";
   }
 }
+.container {
+  display: flex;
+  flex-direction: row;
+}
 @media (min-width: 768px) {
   .div-container {
     width: fit-content;
