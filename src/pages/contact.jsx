@@ -1,4 +1,4 @@
-import mainImg from "../assets/images/23-modified.jpg";
+import mainImg from "../assets/images/chateauMariage.png";
 import ImageAccueil from "../components/ImageAccueil";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useForm } from "@formspree/react";

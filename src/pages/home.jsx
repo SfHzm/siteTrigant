@@ -1,4 +1,4 @@
-import mainImg from "../assets/images/23-modified.jpg";
+import mainImg from "../assets/images/chateauMariage.png";
 import vigne_gauche from "../assets/decorations/vigne_gauche_rotate.png";
 import vigne_droite from "../assets/decorations/vigne_droite_rotate.png";
 import jardin_nuit from "../assets/images/jardin_nuit_mariage.jpg";
