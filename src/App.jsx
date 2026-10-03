@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Histoire from "./pages/histoire";
 import Evenements from "./pages/evenements";
+import Vin from "./pages/vin.jsx";
 import Mariage from "./pages/mariage";
 import MentionsLegales from "./pages/mentions.jsx";
 import Contact from "./pages/contact.jsx";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/confidentialite" element={<Confidentialite />} />
           <Route path="/seminaire" element={<Seminaire />} />
+          <Route path="/vin" element={<Vin />} />
         </Route>
       </Routes>
     </BrowserRouter>

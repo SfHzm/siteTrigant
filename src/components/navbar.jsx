@@ -113,6 +113,15 @@ export default function Navbar() {
             >
               EVENEMENTS PROFESSIONNELS
             </Link>
+            <Link
+              to="/vin"
+              className={`link-container ${
+                location.pathname === "/vin" ? "text-accent-gold" : ""
+              }`}
+              onClick={() => setMenuOpen(false)}
+            >
+              LE VIN
+            </Link>
           </ul>
         </div>
       </div>
